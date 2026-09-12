@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "./world.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Inter, ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+    color: #0d1b3d;
+    background: #68c5ff;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    font: inherit;
+}
