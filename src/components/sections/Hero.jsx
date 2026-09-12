@@ -1,8 +1,6 @@
 import Brick from "../objects/Brick.jsx";
-import Castle from "../objects/Castle.jsx";
 import Coin from "../objects/Coin.jsx";
 import Pipe from "../objects/Pipe.jsx";
-import Platform from "../objects/Platform.jsx";
 import QuestionBlock from "../objects/QuestionBlock.jsx";
 import GameButton from "../ui/GameButton.jsx";
 import WorldBackground from "../world/WorldBackground.jsx";
@@ -20,32 +18,36 @@ function Hero() {
           <h1 id="hero-title">
             LEAN IN <span>HACKS 8.0</span>
           </h1>
-          <GameButton>
-            Start hacking <span aria-hidden="true">→</span>
-          </GameButton>
+          <GameButton>Apply on Devfolio</GameButton>
         </div>
         <div className="world-objects" aria-hidden="true">
-          <div className="blocks blocks-left">
+          <div className="world-object object-top-bricks">
+            <Brick />
+            <Brick />
+          </div>
+          <div className="world-object object-mid-blocks">
             <QuestionBlock />
             <Brick />
             <Brick />
-          </div>
-          <Coin className="coin-left" />
-          <div className="coin-arc coin-arc-left">
-            <Coin />
-            <Coin />
-            <Coin />
-          </div>
-          <Platform className="platform-left" />
-          <Pipe variant="large" className="hero-pipe" />
-          <Pipe variant="small" className="hill-pipe" />
-          <div className="blocks blocks-right">
             <Brick />
-            <QuestionBlock />
           </div>
-          <Coin className="coin-right" />
-          <Platform className="platform-right" />
-          <Castle className="hero-castle" />
+          <div className="world-object object-gap-coins">
+            <Coin />
+            <Coin />
+            <Coin />
+          </div>
+          <div className="world-object object-pipe-left">
+            <Pipe variant="medium" />
+          </div>
+          <div className="world-object object-pipe-center-tall">
+            <Pipe variant="tall" />
+          </div>
+          <div className="world-object object-pipe-top-right">
+            <Pipe variant="small" />
+          </div>
+          <div className="world-object object-right-coin">
+            <Coin />
+          </div>
         </div>
       </section>
     </main>
