@@ -94,3 +94,279 @@ a:hover,
 .sponsor-marquee:hover {
     animation-play-state: paused;
 }
+
+/* Previous-edition metrics */
+.metrics-section {
+    position: relative;
+    isolation: isolate;
+    min-height: 720px;
+    overflow: hidden;
+    padding: 76px 20px 0;
+    background: linear-gradient(180deg, #fcebed 0%, #f8d5de 58%, #f5cbd6 100%);
+}
+
+.metrics-sky {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.metrics-sky::before {
+    position: absolute;
+    inset: auto -8% 72px;
+    height: 190px;
+    content: "";
+    opacity: .55;
+    background:
+        radial-gradient(ellipse at 9% 100%, #fff8f8 0 42%, transparent 43%),
+        radial-gradient(ellipse at 29% 100%, #fff8f8 0 37%, transparent 38%),
+        radial-gradient(ellipse at 53% 100%, #fff8f8 0 45%, transparent 46%),
+        radial-gradient(ellipse at 76% 100%, #fff8f8 0 36%, transparent 37%),
+        radial-gradient(ellipse at 96% 100%, #fff8f8 0 43%, transparent 44%);
+}
+
+.metrics-cloud {
+    opacity: .72;
+}
+
+.metrics-cloud-left {
+    top: 27%;
+    left: 5%;
+    transform: scale(.58);
+    animation-delay: -19s;
+}
+
+.metrics-cloud-right {
+    top: 20%;
+    right: 4%;
+    transform: scale(.66);
+    animation-delay: -7s;
+}
+
+.metrics-sparkle {
+    position: absolute;
+    color: rgba(255, 255, 255, .92);
+    font-size: 23px;
+    text-shadow: 0 2px 0 rgba(185, 100, 125, .12);
+}
+
+.sparkle-one { top: 17%; left: 15%; }
+.sparkle-two { top: 30%; right: 19%; font-size: 17px; }
+.sparkle-three { top: 48%; left: 46%; font-size: 14px; }
+
+.metrics-content {
+    position: relative;
+    z-index: 2;
+    width: min(1300px, 100%);
+    margin: 0 auto;
+}
+
+.metrics-heading {
+    text-align: center;
+}
+
+.metrics-heading p {
+    margin: 0 0 8px;
+    color: #86566b;
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+}
+
+.metrics-heading h2 {
+    margin: 0;
+    color: #3e3540;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(2.3rem, 5vw, 3.75rem);
+    font-weight: 600;
+    letter-spacing: -.05em;
+    line-height: 1.08;
+}
+
+.metrics-pipes {
+    display: grid;
+    grid-template-columns: repeat(3, 240px);
+    align-items: end;
+    justify-content: space-between;
+    gap: 0;
+    height: 485px;
+    padding: 30px 0 0;
+}
+
+.metric-column {
+    display: flex;
+    width: 240px;
+    height: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.metric-label {
+    display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: center;
+    color: #4b3d46;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.metric-label strong {
+    display: block;
+    width: 100%;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.06em;
+    line-height: .95;
+    text-align: center;
+    text-shadow: 0 3px 0 rgba(255, 255, 255, .65);
+}
+
+.metric-label span {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    color: #765667;
+    font-size: clamp(.73rem, 1.8vw, .95rem);
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.metric-pipe-window {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.metric-pipe-rise {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.metric-pipe-rise .pipe {
+    position: relative;
+    inset: auto;
+    width: clamp(82px, 10vw, 118px);
+    flex: none;
+    filter: drop-shadow(7px 9px 0 rgba(85, 81, 75, .12));
+}
+
+.metric-pipe-rise .pipe-lip {
+    left: -12px;
+    width: calc(100% + 24px);
+    height: 42px;
+    border-width: 5px;
+    border-radius: 13px 13px 5px 5px;
+    background: linear-gradient(90deg, #3c7d49 0 17%, #75bd54 18% 32%, #b0dc68 33% 42%, #70b956 43% 82%, #559c49 83% 100%);
+    box-shadow: inset 0 6px 0 rgba(210, 243, 131, .35);
+}
+
+.metric-pipe-rise .pipe-body {
+    top: 36px;
+    height: calc(100% - 36px);
+    border-width: 5px;
+    background: linear-gradient(90deg, #3c7d49 0 15%, #68ad4e 16% 29%, #aee06c 30% 40%, #73bb56 41% 83%, #4c9146 84% 100%);
+    box-shadow: inset 0 8px 0 rgba(203, 235, 119, .15);
+}
+
+.metrics-ground {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    height: 76px;
+    pointer-events: none;
+}
+
+.metrics-grass {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 29px;
+    border: 3px solid #596d55;
+    border-right: 0;
+    border-left: 0;
+    background: linear-gradient(180deg, #b7df6a, #70bc61);
+    box-shadow: inset 0 -5px rgba(54, 126, 76, .3);
+}
+
+.metrics-grass::before {
+    position: absolute;
+    top: -11px;
+    right: 0;
+    left: 0;
+    height: 16px;
+    content: "";
+    background: radial-gradient(17px 11px at 18px 16px, transparent 60%, #596d55 63% 70%, transparent 73%) 0 0 / 36px 16px repeat-x;
+}
+
+.metrics-soil {
+    position: absolute;
+    inset: 29px 0 0;
+    border-top: 3px solid #b87857;
+    background-color: #b96d4d;
+    background-image: linear-gradient(90deg, transparent 47%, rgba(108, 66, 57, .18) 48% 53%, transparent 54%), linear-gradient(transparent 47%, rgba(108, 66, 57, .18) 48% 53%, transparent 54%), radial-gradient(#dc9768 14%, transparent 17%);
+    background-size: 36px 29px, 36px 29px, 31px 31px;
+}
+
+@media (max-width: 900px) {
+    .metrics-pipes {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .metric-column {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .metrics-section {
+        min-height: 660px;
+        padding-top: 62px;
+    }
+
+    .metrics-pipes {
+        gap: 12px;
+        height: 450px;
+        padding: 28px 2px 0;
+    }
+
+    .metric-label {
+        margin-bottom: 12px;
+    }
+
+    .metric-label strong {
+        font-size: clamp(1.65rem, 8vw, 2.25rem);
+    }
+
+    .metric-label span {
+        max-width: 94px;
+        font-size: .62rem;
+        letter-spacing: .08em;
+    }
+
+    .metric-pipe-rise .pipe {
+        width: clamp(64px, 20vw, 86px);
+    }
+
+    .metric-pipe-rise .pipe-lip {
+        left: -8px;
+        width: calc(100% + 16px);
+    }
+
+    .metrics-cloud-right {
+        display: none;
+    }
+}
