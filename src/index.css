@@ -188,6 +188,8 @@ a:hover,
 
 .metrics-pipes {
     display: grid;
+    width: min(1020px, 100%);
+    margin: 0 auto;
     grid-template-columns: repeat(3, 240px);
     align-items: end;
     justify-content: space-between;
@@ -197,6 +199,7 @@ a:hover,
 }
 
 .metric-column {
+    position: relative;
     display: flex;
     width: 240px;
     height: 100%;
@@ -280,6 +283,46 @@ a:hover,
     box-shadow: inset 0 8px 0 rgba(203, 235, 119, .15);
 }
 
+.metric-coins-rise,
+.metric-coins {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.metric-coins-rise {
+    z-index: 3;
+    will-change: transform;
+}
+
+.metric-burst-coin {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: grid;
+    width: 27px;
+    height: 37px;
+    margin-left: -13.5px;
+    place-items: center;
+    border: 4px solid #9d7134;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #eaa72d 0 15%, #ffe982 33% 57%, #f2b83a 76% 100%);
+    box-shadow: inset 4px 0 #fff9bc, inset -4px 0 #e89a1d, 0 4px 0 rgba(81, 61, 58, .16);
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+}
+
+.metric-burst-coin i {
+    width: 4px;
+    height: 21px;
+    border-radius: 4px;
+    background: #d88b0e;
+}
+
 .metrics-ground {
     position: absolute;
     right: 0;
@@ -322,6 +365,7 @@ a:hover,
 
 @media (max-width: 900px) {
     .metrics-pipes {
+        width: 100%;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 24px;
     }
@@ -364,6 +408,17 @@ a:hover,
     .metric-pipe-rise .pipe-lip {
         left: -8px;
         width: calc(100% + 16px);
+    }
+
+    .metric-burst-coin {
+        width: 24px;
+        height: 33px;
+        margin-left: -12px;
+        border-width: 3px;
+    }
+
+    .metric-burst-coin i {
+        height: 17px;
     }
 
     .metrics-cloud-right {
