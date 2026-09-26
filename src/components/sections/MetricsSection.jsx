@@ -42,28 +42,30 @@ function seededRandom(seed) {
 function makeCoinBurst(seed, count) {
   const random = seededRandom(seed);
 
-  return Array.from({ length: count }, (_, index) => {
-    const slot = count === 1 ? 0.5 : index / (count - 1);
+  return Array.from({ length: count }, () => {
     const direction = random() > 0.5 ? 1 : -1;
+    const x = (random() - 0.5) * 340;
 
     return {
-      x: -138 + slot * 276 + (random() - 0.5) * 22,
-      arc: 94 + random() * 142,
+      x,
+      launchX: (random() - 0.5) * 34,
+      crossX: x * (0.18 + random() * 0.48) + (random() - 0.5) * 100,
+      arc: 96 + random() * 190,
       spin: direction * (560 + random() * 920),
       restY: -12 - random() * 9,
       tilt: -16 + random() * 32,
-      launchDelay: random() * 0.105,
-      duration: 0.72 + random() * 0.25,
-      size: 0.78 + random() * 0.3,
+      launchDelay: random() * 0.075,
+      duration: 0.64 + random() * 0.34,
+      size: 0.7 + random() * 0.42,
       bounce: 6 + random() * 11,
     };
   });
 }
 
 const coinBursts = [
-  makeCoinBurst(17, 7),
-  makeCoinBurst(43, 9),
-  makeCoinBurst(91, 6),
+  makeCoinBurst(17, 12),
+  makeCoinBurst(43, 16),
+  makeCoinBurst(91, 13),
 ];
 
 const coinVariants = {
@@ -79,6 +81,8 @@ const coinVariants = {
     height,
     pipeIndex,
     x,
+    launchX,
+    crossX,
     arc,
     spin,
     restY,
@@ -91,7 +95,7 @@ const coinVariants = {
     const startY = -height + 18;
 
     return {
-      x: [0, x * 0.16, x * 0.58, x * 1.04, x * 0.985, x, x],
+      x: [launchX, crossX, x * 0.72, x * 1.06, x * 0.97, x, x],
       y: [
         startY,
         startY - arc,
