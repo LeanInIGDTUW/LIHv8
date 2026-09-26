@@ -209,7 +209,7 @@ function MetricsSection() {
           className="metrics-pipes"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.52 }}
+          viewport={{ once: true, amount: 0.68 }}
         >
           {metrics.map((metric, index) => (
             <MetricPipe key={metric.label} metric={metric} index={index} />
