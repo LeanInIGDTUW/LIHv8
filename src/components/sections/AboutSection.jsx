@@ -251,7 +251,13 @@ function AboutSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto max-w-5xl [perspective:1800px]">
+        <div className="relative mx-auto max-w-5xl translate-y-2 [perspective:1800px] md:translate-y-1">
+          <img
+            src="/images/characters/marioPeeking.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[-4px] right-[-14px] z-20 hidden h-40 w-auto md:block md:bottom-[-8px] md:right-[-20px] md:h-48 lg:right-[-80px] lg:h-56"
+          />
           <div className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 rotate-[0.7deg] bg-[#f0e4d3] shadow-lg" />
           <div className="pointer-events-none absolute inset-0 -translate-x-2 translate-y-1 rotate-[-0.5deg] bg-[#fff4e4] shadow-md" />
 
@@ -355,12 +361,19 @@ function AboutSection() {
                       setDirection(null);
                     }, 750);
                   }}
-                  className={`h-1.5 transition-all ${
-                    index === currentSpread
-                      ? "w-8 bg-[#c96586]"
-                      : "w-1.5 bg-[#b9899b]/50"
-                  }`}
-                />
+                  className="flex h-8 w-8 items-center justify-center transition-transform duration-200 hover:scale-110 disabled:pointer-events-none"
+                >
+                  <img
+                    src="/images/characters/mushroom.png"
+                    alt=""
+                    aria-hidden="true"
+                    className={`h-6 w-6 object-contain transition-all duration-200 ${
+                      index === currentSpread
+                        ? "scale-125 opacity-100"
+                        : "opacity-45"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
