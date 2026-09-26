@@ -1,5 +1,9 @@
-@import "tailwindcss";
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "./world.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 *::before,
@@ -17,7 +21,7 @@ body,
 
 body {
     overflow-x: hidden;
-    font-family: Inter, ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+    font-family: "Poppins", "DM Sans", Inter, ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
     color: #0d1b3d;
     background: #68c5ff;
     text-rendering: optimizeLegibility;
@@ -26,4 +30,67 @@ body {
 
 button {
     font: inherit;
+}
+
+/* Custom pixel cursor */
+html,
+body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2v17l5-4 3 7 3-2-3-7h7L3 2z' fill='white' stroke='%23333333' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+}
+
+/* Pointer cursor for clickable elements */
+button,
+a,
+[role="button"],
+input,
+select,
+textarea {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M8 3v12M8 8c0-2 3-2 3 0v5-7c0-2 3-2 3 0v7-5c0-2 3-2 3 0v5-3c0-2 3-2 3 0v7c0 5-3 8-8 8-4 0-7-2-7-6V8c0-2 3-2 3 0z' fill='white' stroke='%23333333' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 8 3, pointer;
+}
+
+button,
+a,
+[role="button"] {
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover,
+a:hover,
+[role="button"]:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+/* Don't force custom cursor on touch devices */
+@media (hover: none),
+(pointer: coarse) {
+
+    html,
+    body,
+    button,
+    a,
+    [role="button"],
+    input,
+    select,
+    textarea {
+        cursor: auto;
+    }
+}
+
+@keyframes sponsor-marquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.sponsor-marquee {
+    animation: sponsor-marquee 24s linear infinite;
+}
+
+.sponsor-marquee:hover {
+    animation-play-state: paused;
 }

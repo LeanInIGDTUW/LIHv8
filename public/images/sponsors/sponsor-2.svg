@@ -1,0 +1,9 @@
+<svg width="300" height="140" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="140" rx="18" fill="#F9F6FF"/>
+  <path d="M52 96L80 44L108 96H52Z" fill="#B39DFF"/>
+  <path d="M76 96L104 44L132 96H76Z" fill="#FFB3B3"/>
+  <rect x="140" y="38" width="120" height="18" rx="9" fill="#6ABEA2"/>
+  <rect x="140" y="68" width="92" height="16" rx="8" fill="#FFD166"/>
+  <rect x="140" y="92" width="118" height="16" rx="8" fill="#7DB3FF"/>
+  <text x="152" y="120" text-anchor="middle" fill="#4E4A5A" font-family="Arial, sans-serif" font-size="20" font-weight="700">SPONSOR 2</text>
+</svg>

@@ -4,6 +4,7 @@ import Pipe from "../objects/Pipe.jsx";
 import QuestionBlock from "../objects/QuestionBlock.jsx";
 import GameButton from "../ui/GameButton.jsx";
 import WorldBackground from "../world/WorldBackground.jsx";
+
 function Hero() {
   return (
     <main className="world-page">

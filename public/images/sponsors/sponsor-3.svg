@@ -1,0 +1,9 @@
+<svg width="300" height="140" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="140" rx="18" fill="#EEF9FF"/>
+  <circle cx="80" cy="70" r="32" fill="#7ED7FF"/>
+  <path d="M90 49C105 38 124 42 135 58C146 75 144 95 128 105C112 116 87 110 74 94C63 80 62 60 90 49Z" fill="#FFD384"/>
+  <rect x="148" y="36" width="110" height="18" rx="9" fill="#FF98B9"/>
+  <rect x="148" y="66" width="120" height="16" rx="8" fill="#7BC8A4"/>
+  <rect x="148" y="92" width="90" height="16" rx="8" fill="#8EA1FF"/>
+  <text x="155" y="120" text-anchor="middle" fill="#4E4A5A" font-family="Arial, sans-serif" font-size="20" font-weight="700">SPONSOR 3</text>
+</svg>

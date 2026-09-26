@@ -1,0 +1,8 @@
+<svg width="300" height="140" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="140" rx="18" fill="#FDF4F7"/>
+  <circle cx="82" cy="70" r="28" fill="#FFB8CC"/>
+  <rect x="118" y="36" width="138" height="16" rx="8" fill="#6E8EF6"/>
+  <rect x="118" y="62" width="108" height="16" rx="8" fill="#FFC857"/>
+  <rect x="118" y="88" width="128" height="16" rx="8" fill="#8FD3C4"/>
+  <text x="150" y="120" text-anchor="middle" fill="#4E4A5A" font-family="Arial, sans-serif" font-size="20" font-weight="700">SPONSOR 1</text>
+</svg>
