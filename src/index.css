@@ -300,11 +300,11 @@ a:hover,
     top: 0;
     left: 0;
     z-index: 12;
-    width: 60px;
-    height: 60px;
-    opacity: 0;
-    filter: drop-shadow(0 6px 0 rgba(137, 94, 48, .16));
+    width: 78px;
+    height: 78px;
+    filter: drop-shadow(0 7px 0 rgba(137, 81, 82, .16));
     will-change: transform;
+    opacity: 1;
 }
 
 .timeline-star svg {
@@ -360,8 +360,8 @@ a:hover,
     }
 
     .timeline-star {
-        width: 52px;
-        height: 52px;
+        width: 68px;
+        height: 68px;
     }
 }
 
