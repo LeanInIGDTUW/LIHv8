@@ -124,13 +124,15 @@ function TimelineCard({ round, revealed, impacted, cardRef, index }) {
 }
 
 function TimelineSection() {
+  const sectionRef = useRef(null);
   const stageRef = useRef(null);
   const eyebrowRef = useRef(null);
   const starRef = useRef(null);
   const cardRefs = useRef([]);
   const [revealedRounds, setRevealedRounds] = useState([]);
   const [impactedRound, setImpactedRound] = useState(null);
-  const isInView = useInView(stageRef, { once: true, amount: 0.46 });
+  const [cloudsActive, setCloudsActive] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   useLayoutEffect(() => {
     const positionRestingStar = () => {
@@ -184,6 +186,8 @@ function TimelineSection() {
       const firstDrift = randomBetween(-78, 74);
       const firstApproach = randomBetween(-48, 50);
       const firstSpin = randomBetween(28, 64) * (Math.random() > 0.5 ? 1 : -1);
+
+      setCloudsActive(true);
 
       await animate(
         star,
@@ -264,7 +268,7 @@ function TimelineSection() {
   }, [isInView]);
 
   return (
-    <section id="timeline" className="timeline-section" aria-labelledby="timeline-title">
+    <section ref={sectionRef} id="timeline" className="timeline-section" aria-labelledby="timeline-title">
       <div className="timeline-glow" aria-hidden="true" />
 
       <div className="timeline-shell">
@@ -275,6 +279,14 @@ function TimelineSection() {
         </div>
 
         <div ref={stageRef} className="timeline-stage">
+          <div
+            className={`timeline-stage-clouds ${cloudsActive ? "is-active" : ""}`}
+            aria-hidden="true"
+          >
+            <span className="cloud timeline-bg-cloud timeline-bg-cloud-one" />
+            <span className="cloud timeline-bg-cloud timeline-bg-cloud-two" />
+            <span className="cloud timeline-bg-cloud timeline-bg-cloud-three" />
+          </div>
           <div className="timeline-path" aria-hidden="true" />
           <TimelineStar starRef={starRef} />
 
