@@ -10,29 +10,31 @@ const rounds = [
 const wait = (milliseconds) =>
   new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 
-function TimelineStar({ starRef, winking }) {
+function TimelineStar({ starRef }) {
   return (
     <div ref={starRef} className="timeline-star" aria-hidden="true">
       <svg viewBox="0 0 64 64" role="presentation">
         <path d="M32 4 40.2 21l18.6 2.6-13.5 13.1 3.2 18.5L32 46.5 15.5 55.2l3.2-18.5L5.2 23.6 23.8 21Z" />
         <ellipse cx="25" cy="30" rx="2.3" ry="4" />
-        <motion.ellipse
-          cx="39"
-          cy="30"
-          rx="2.3"
-          animate={{ ry: winking ? [4, 0.35, 0.35, 4] : 4 }}
-          transition={{ duration: 0.48, times: [0, 0.22, 0.68, 1] }}
-        />
+        <ellipse cx="39" cy="30" rx="2.3" ry="4" />
       </svg>
     </div>
   );
 }
 
-function TimelineCard({ round, revealed, cardRef, index }) {
+function TimelineCard({ round, revealed, impacted, cardRef, index }) {
   return (
-    <div
+    <motion.div
       ref={cardRef}
       className={`timeline-stop timeline-stop-${round.side} timeline-stop-${index + 1}`}
+      animate={impacted ? {
+        x: [0, index % 2 ? 7 : -8, index % 2 ? -4 : 5, 0],
+        y: [0, 7, -3, 0],
+        rotate: [0, index % 2 ? 0.8 : -0.9, index % 2 ? -0.35 : 0.4, 0],
+        scaleX: [1, 1.012, 0.995, 1],
+        scaleY: [1, 0.96, 1.015, 1],
+      } : { x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1 }}
+      transition={{ duration: 0.28, times: [0, 0.28, 0.68, 1], ease: "easeOut" }}
     >
       <motion.div
         className="timeline-card"
@@ -53,7 +55,7 @@ function TimelineCard({ round, revealed, cardRef, index }) {
           <time>{round.date}</time>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -63,7 +65,7 @@ function TimelineSection() {
   const starRef = useRef(null);
   const cardRefs = useRef([]);
   const [revealedRounds, setRevealedRounds] = useState([]);
-  const [winking, setWinking] = useState(false);
+  const [impactedRound, setImpactedRound] = useState(null);
   const isInView = useInView(stageRef, { once: true, amount: 0.46 });
 
   useLayoutEffect(() => {
@@ -91,21 +93,23 @@ function TimelineSection() {
 
     const getTargets = () => {
       const stageBox = stageRef.current.getBoundingClientRect();
+      const starSize = starRef.current.getBoundingClientRect().width;
 
       return cardRefs.current.map((card, index) => {
         const cardBox = card.getBoundingClientRect();
 
         return {
-          x: cardBox.left - stageBox.left + cardBox.width * [0.31, 0.68, 0.39][index] - 39,
-          y: cardBox.top - stageBox.top - 66,
+          x: cardBox.left - stageBox.left + cardBox.width * [0.27, 0.72, 0.36][index] - starSize / 2,
+          y: cardBox.top - stageBox.top - starSize + 5,
         };
       });
     };
 
-    const revealRound = async (index) => {
+    const impactRound = async (index) => {
       if (cancelled) return;
+      setImpactedRound(index);
       setRevealedRounds((current) => [...current, index]);
-      await wait(420);
+      await wait(50);    // short impact pause before rebound
     };
 
     const runTimeline = async () => {
@@ -114,30 +118,29 @@ function TimelineSection() {
       const startTransform = new DOMMatrixReadOnly(getComputedStyle(star).transform);
       const start = { x: startTransform.m41, y: startTransform.m42 };
 
-      setWinking(true);
-      await wait(540);
-      setWinking(false);
       await animate(
         star,
         {
-          x: [start.x, start.x - 12, start.x + 8, start.x],
-          y: [start.y, start.y + 10, start.y - 16, start.y],
-          scaleX: [1, 1.13, 0.9, 1],
-          scaleY: [1, 0.82, 1.12, 1],
-          rotate: [0, -7, 6, 0],
+          x: [start.x, start.x - 8, start.x + 5],
+          y: [start.y, start.y + 8, start.y - 13],
+          scaleX: [1, 1.08, 0.94],
+          scaleY: [1, 0.88, 1.08],
+          rotate: [0, -6, 5],
         },
-        { duration: 0.58, times: [0, 0.2, 0.6, 1], ease: "easeInOut" },
+        { duration: 0.14, times: [0, 0.42, 1], ease: "easeOut" },  // launch prep time
       );
       await animate(
         star,
         {
-          x: [start.x, start.x - 46, targets[0].x + 34, targets[0].x],
-          y: [start.y, start.y - 82, targets[0].y - 104, targets[0].y + 8],
-          rotate: [0, -18, 28, -9],
-          scale: [1, 0.92, 0.88, 0.88],
+          x: [start.x + 5, start.x - 52, targets[0].x + 42, targets[0].x],
+          y: [start.y - 13, start.y - 94, targets[0].y - 82, targets[0].y + 8],
+          rotate: [5, -24, 36, -11],
+          scaleX: [0.94, 0.88, 1.02, 0.91],
+          scaleY: [1.08, 1.02, 0.86, 0.91],
         },
-        { duration: 0.88, times: [0, 0.28, 0.7, 1], ease: [0.32, 0.02, 0.18, 1] },
+        { duration: 0.38, times: [0, 0.28, 0.72, 1], ease: [0.3, 0.03, 0.16, 1] }, // first flight
       );
+      await impactRound(0);
       await animate(
         star,
         {
@@ -145,9 +148,8 @@ function TimelineSection() {
           y: [targets[0].y + 8, targets[0].y - 38, targets[0].y - 8, targets[0].y],
           rotate: [-9, 14, -5, 0],
         },
-        { duration: 0.46, times: [0, 0.38, 0.75, 1], ease: "easeOut" },
+        { duration: 0.2, times: [0, 0.36, 0.72, 1], ease: "easeOut" },   //first rebound
       );
-      await revealRound(0);
 
       for (let index = 1; index < targets.length; index += 1) {
         if (cancelled) return;
@@ -167,8 +169,9 @@ function TimelineSection() {
             scaleX: [0.88, 1.02, 0.84, 0.95, 0.88],
             scaleY: [0.88, 0.78, 0.94, 0.82, 0.88],
           },
-          { duration: 0.92, times: [0, 0.16, 0.5, 0.82, 1], ease: [0.3, 0.02, 0.18, 1] },
+          { duration: 0.4, times: [0, 0.15, 0.48, 0.82, 1], ease: [0.27, 0.03, 0.15, 1] },  // fligh between bricks
         );
+        await impactRound(index);
         await animate(
           star,
           {
@@ -176,9 +179,8 @@ function TimelineSection() {
             y: [target.y + 9, target.y - 44, target.y - 11, target.y],
             rotate: [direction * 6, -direction * 19, direction * 7, 0],
           },
-          { duration: 0.48, times: [0, 0.4, 0.76, 1], ease: "easeOut" },
+          { duration: 0.2, times: [0, 0.38, 0.74, 1], ease: "easeOut" },    // impact rebounds
         );
-        await revealRound(index);
       }
     };
 
@@ -202,7 +204,7 @@ function TimelineSection() {
 
         <div ref={stageRef} className="timeline-stage">
           <div className="timeline-path" aria-hidden="true" />
-          <TimelineStar starRef={starRef} winking={winking} />
+          <TimelineStar starRef={starRef} />
 
           {rounds.map((round, index) => (
             <TimelineCard
@@ -210,6 +212,7 @@ function TimelineSection() {
               round={round}
               index={index}
               revealed={revealedRounds.includes(index)}
+              impacted={impactedRound === index}
               cardRef={(element) => {
                 cardRefs.current[index] = element;
               }}
