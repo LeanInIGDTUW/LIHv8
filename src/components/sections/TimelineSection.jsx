@@ -196,6 +196,51 @@ function TimelineSection() {
     if (!isInView || !stageRef.current || !starRef.current) return undefined;
 
     let cancelled = false;
+    let scrollFrame = null;
+    let scrollStartedAt = 0;
+
+    const stopAutoScroll = (event) => {
+      if (event.type === "wheel" && event.deltaY > 0) return;
+      if (performance.now() - scrollStartedAt < 300) return;
+      window.cancelAnimationFrame(scrollFrame);
+      scrollFrame = null;
+    };
+
+    const scrollWithStar = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const firstCard = cardRefs.current[0];
+      const lastCard = cardRefs.current[cardRefs.current.length - 1];
+      if (!firstCard || !lastCard) return;
+
+      const firstTop = firstCard.getBoundingClientRect().top + window.scrollY;
+      const lastBottom = lastCard.getBoundingClientRect().bottom + window.scrollY;
+      const cardsHeight = lastBottom - firstTop;
+      const screenMargin = Math.max(16, (window.innerHeight - cardsHeight) / 2);
+      const startY = window.scrollY;
+      const endY = Math.min(
+        document.documentElement.scrollHeight - window.innerHeight,
+        Math.max(startY, firstTop - screenMargin),
+      );
+      if (endY - startY < 12) return;
+
+      scrollStartedAt = performance.now();
+      const scrollDuration = 1900;
+      const advanceScroll = (now) => {
+        if (cancelled) return;
+        const progress = Math.min((now - scrollStartedAt) / scrollDuration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, Math.max(window.scrollY, startY + (endY - startY) * eased));
+        if (progress < 1) scrollFrame = window.requestAnimationFrame(advanceScroll);
+        else scrollFrame = null;
+      };
+
+      scrollFrame = window.requestAnimationFrame(advanceScroll);
+    };
+
+    window.addEventListener("wheel", stopAutoScroll, { passive: true });
+    window.addEventListener("touchstart", stopAutoScroll, { passive: true });
+    window.addEventListener("keydown", stopAutoScroll);
 
     const getTargets = () => {
       const stageBox = stageRef.current.getBoundingClientRect();
@@ -219,6 +264,9 @@ function TimelineSection() {
     };
 
     const runTimeline = async () => {
+      await wait(500);             // auto scroll delay
+      if (cancelled) return;
+
       const targets = getTargets();
       const star = starRef.current;
       const startTransform = new DOMMatrixReadOnly(getComputedStyle(star).transform);
@@ -228,6 +276,7 @@ function TimelineSection() {
       const firstSpin = randomBetween(28, 64) * (Math.random() > 0.5 ? 1 : -1);
 
       setCloudsActive(true);
+      scrollWithStar();
 
       await animate(
         star,
@@ -304,6 +353,10 @@ function TimelineSection() {
 
     return () => {
       cancelled = true;
+      window.cancelAnimationFrame(scrollFrame);
+      window.removeEventListener("wheel", stopAutoScroll);
+      window.removeEventListener("touchstart", stopAutoScroll);
+      window.removeEventListener("keydown", stopAutoScroll);
     };
   }, [isInView]);
 
