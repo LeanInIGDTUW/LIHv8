@@ -1,5 +1,6 @@
 import { animate, motion, useInView } from "framer-motion";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import Pipe from "../objects/Pipe.jsx";
 
 const rounds = [
   { number: "01", name: "Ideation", date: "31st Oct", side: "left" },
@@ -51,6 +52,45 @@ function TimelineStar({ starRef }) {
         <ellipse cx="25" cy="30" rx="2.3" ry="4" />
         <ellipse cx="39" cy="30" rx="2.3" ry="4" />
       </svg>
+    </div>
+  );
+}
+
+function TimelineScenery() {
+  return (
+    <div className="timeline-scenery" aria-hidden="true">
+      <svg className="timeline-pink-wave" viewBox="0 0 1900 520" preserveAspectRatio="none" role="presentation">
+        <path
+          className="timeline-pink-wave-shape"
+          d="M0 265C120 265 225 273 345 267C485 260 590 266 710 270C840 274 960 265 1090 262C1225 259 1360 263 1490 257C1635 253 1765 259 1900 258V520H0Z"
+        />
+      </svg>
+      <span className="hill timeline-scene-hill timeline-scene-hill-left"><i /></span>
+      <span className="hill timeline-scene-hill timeline-scene-hill-gold"><i /></span>
+
+      <div className="timeline-land timeline-land-left">
+        <span className="timeline-land-grass" />
+        <span className="timeline-land-soil" />
+      </div>
+      <div className="timeline-land timeline-land-right">
+        <span className="timeline-land-grass" />
+        <span className="timeline-land-soil" />
+      </div>
+
+      <Pipe variant="medium" className="timeline-scene-pipe timeline-scene-pipe-left" />
+      <Pipe variant="tall" className="timeline-scene-pipe timeline-scene-pipe-centre" />
+      <div className="timeline-plant-wrap">
+        <span className="timeline-piranha">
+          <i className="timeline-piranha-mouth" />
+          <i className="timeline-piranha-spot spot-one" />
+          <i className="timeline-piranha-spot spot-two" />
+          <i className="timeline-piranha-spot spot-three" />
+        </span>
+        <span className="timeline-plant-stem" />
+        <span className="timeline-plant-leaf leaf-left" />
+        <span className="timeline-plant-leaf leaf-right" />
+        <Pipe variant="small" className="timeline-scene-pipe timeline-scene-pipe-plant" />
+      </div>
     </div>
   );
 }
@@ -270,6 +310,8 @@ function TimelineSection() {
   return (
     <section ref={sectionRef} id="timeline" className="timeline-section" aria-labelledby="timeline-title">
       <div className="timeline-glow" aria-hidden="true" />
+      <span className="timeline-heading-sparkle timeline-heading-sparkle-left" aria-hidden="true">✦</span>
+      <span className="timeline-heading-sparkle timeline-heading-sparkle-right" aria-hidden="true">✦</span>
 
       <div className="timeline-shell">
         <div className="timeline-heading">
@@ -304,6 +346,8 @@ function TimelineSection() {
           ))}
         </div>
       </div>
+
+      <TimelineScenery />
     </section>
   );
 }
