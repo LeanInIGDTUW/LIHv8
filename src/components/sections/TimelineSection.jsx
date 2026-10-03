@@ -369,7 +369,7 @@ function TimelineSection() {
       <div className="timeline-shell">
         <div className="timeline-heading">
           <p ref={eyebrowRef}>Level Select</p>
-          <h2 id="timeline-title">The road to finale.</h2>
+          <h2 id="timeline-title">Hackathon Timeline</h2>
           <span>Three rounds. One winning journey.</span>
         </div>
 
