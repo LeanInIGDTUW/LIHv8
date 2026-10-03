@@ -100,7 +100,7 @@ a:hover,
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    padding: 88px 20px 265px;
+    padding: 88px 20px 235px;
     background: linear-gradient(180deg, #fcebed 0%, #f8d5de 58%, #f5cbd6 100%);
 }
 
@@ -167,8 +167,8 @@ a:hover,
 
 .timeline-stage {
     position: relative;
-    height: 690px;
-    margin-top: 50px;
+    height: 600px;
+    margin-top: 42px;
 }
 
 .timeline-path {
@@ -194,11 +194,11 @@ a:hover,
 }
 
 .timeline-stop-2 {
-    top: 285px;
+    top: 245px;
 }
 
 .timeline-stop-3 {
-    top: 510px;
+    top: 430px;
 }
 
 .timeline-stop-left {
@@ -623,15 +623,15 @@ a:hover,
 
 @media (max-width: 820px) {
     .timeline-section {
-        padding: 70px 16px 230px;
+        padding: 70px 16px 220px;
     }
 
     .timeline-heading-sparkle-left { top: 105px; left: 5%; font-size: 17px; }
     .timeline-heading-sparkle-right { top: 205px; right: 7%; font-size: 15px; }
 
     .timeline-stage {
-        height: 650px;
-        margin-top: 44px;
+        height: 590px;
+        margin-top: 40px;
     }
 
     .timeline-stop {
@@ -643,8 +643,8 @@ a:hover,
     .timeline-stop-right { right: 2%; }
 
     .timeline-stop-1 { top: 65px; }
-    .timeline-stop-2 { top: 275px; }
-    .timeline-stop-3 { top: 485px; }
+    .timeline-stop-2 { top: 250px; }
+    .timeline-stop-3 { top: 435px; }
 
     .timeline-card-back {
         padding: 17px 18px;
