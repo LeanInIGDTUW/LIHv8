@@ -4,6 +4,8 @@ import Pipe from "../objects/Pipe.jsx";
 import QuestionBlock from "../objects/QuestionBlock.jsx";
 import GameButton from "../ui/GameButton.jsx";
 import WorldBackground from "../world/WorldBackground.jsx";
+import devfolioImage from "../../../images/CTAs/devfolio.png";
+import discordImage from "../../../images/CTAs/discord.png";
 
 function Hero() {
   return (
@@ -19,7 +21,16 @@ function Hero() {
           <h1 id="hero-title">
             LEAN IN <span>HACKS 8.0</span>
           </h1>
-          <GameButton>Apply on Devfolio</GameButton>
+          <div className="hero-ctas">
+            <GameButton href="https://lean-in-hacks-8.devfolio.co/overview">
+              <img src={devfolioImage} alt="" aria-hidden="true" />
+              Apply on Devfolio
+            </GameButton>
+            <GameButton>
+              <img src={discordImage} alt="" aria-hidden="true" />
+              Join Discord
+            </GameButton>
+          </div>
         </div>
         <div className="world-objects" aria-hidden="true">
           <div className="world-object object-top-bricks">

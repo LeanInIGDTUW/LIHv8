@@ -451,19 +451,39 @@
 }
 
 .game-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
-    margin-top: 2.5rem;
+    margin-top: 0;
     border: 3px solid #b84f63;
     border-radius: 13px;
     padding: 14px 20px 13px;
     background: #e96f82;
     box-shadow: 0 6px 0 #b84f63, 0 12px 20px rgba(122, 73, 83, .2);
     color: #fffdf8;
+    text-decoration: none;
     font-size: .9rem;
     font-weight: 950;
     text-transform: uppercase;
     letter-spacing: .08em;
     transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 2.5rem;
+}
+
+.game-button img {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 auto;
+    object-fit: contain;
 }
 
 .game-button:hover {
@@ -866,9 +886,18 @@
     }
 
     .game-button {
+        padding: 11px 14px 10px;
+        font-size: .7rem;
+    }
+
+    .hero-ctas {
+        gap: 10px;
         margin-top: 2rem;
-        padding: 13px 16px 12px;
-        font-size: .78rem;
+    }
+
+    .game-button img {
+        width: 22px;
+        height: 22px;
     }
 
     .cloud-three,
