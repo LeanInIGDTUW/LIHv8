@@ -3,9 +3,7 @@
     isolation: isolate;
     overflow: hidden;
     padding: 72px 20px 78px;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 249, 250, .88), transparent 54%),
-        linear-gradient(180deg, #fcebed 0%, #f5dbe4 48%, #dff0fa 100%);
+    background: linear-gradient(180deg, #fcebed 0%, #f8d5de 58%, #f5cbd6 100%);
     color: #40353e;
 }
 
@@ -15,6 +13,34 @@
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+}
+
+.tracks-coming-soon .tracks-coming-soon-bg-cloud {
+    opacity: .48;
+    border-color: rgba(128, 107, 118, .42);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 250, 251, .58));
+    box-shadow: inset 0 4px 0 rgba(255, 255, 255, .65);
+}
+
+.tracks-coming-soon .tracks-coming-soon-bg-cloud-one {
+    top: 15%;
+    left: 6%;
+    transform: scale(.66);
+    animation-delay: -8s;
+}
+
+.tracks-coming-soon .tracks-coming-soon-bg-cloud-two {
+    top: 43%;
+    right: 8%;
+    transform: scale(.76);
+    animation-delay: -22s;
+}
+
+.tracks-coming-soon .tracks-coming-soon-bg-cloud-three {
+    top: 72%;
+    left: 15%;
+    transform: scale(.55);
+    animation-delay: -33s;
 }
 
 .tracks-coming-soon .tracks-coming-soon-shell {
@@ -527,6 +553,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .tracks-coming-soon .tracks-coming-soon-bg-cloud,
     .tracks-coming-soon .tracks-coming-soon-cloud,
     .tracks-coming-soon .tracks-coming-soon-coin {
         animation: none;

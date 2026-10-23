@@ -17,6 +17,9 @@ function TracksComingSoon() {
       aria-labelledby="tracks-coming-soon-title"
     >
       <div className="tracks-coming-soon-atmosphere" aria-hidden="true">
+        <span className="cloud tracks-coming-soon-bg-cloud tracks-coming-soon-bg-cloud-one" />
+        <span className="cloud tracks-coming-soon-bg-cloud tracks-coming-soon-bg-cloud-two" />
+        <span className="cloud tracks-coming-soon-bg-cloud tracks-coming-soon-bg-cloud-three" />
         <span className="tracks-coming-soon-sparkle tracks-coming-soon-sparkle-left">✦</span>
         <span className="tracks-coming-soon-sparkle tracks-coming-soon-sparkle-right">✧</span>
       </div>
