@@ -99,7 +99,7 @@ function GuidelinesSection() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-2 left-2 z-20 hidden h-36 w-auto md:block lg:h-44 xl:h-52">
+      <div className="pointer-events-none absolute bottom-2 left-2 z-20 hidden h-36 w-auto lg:block lg:h-44 xl:h-52">
         <img
           src="/images/characters/mario.png"
           alt="Mario"

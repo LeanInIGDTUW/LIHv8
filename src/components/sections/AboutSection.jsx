@@ -100,7 +100,7 @@ function PageContent({ page, side = "left" }) {
         }}
       />
 
-      <div className="relative z-10 h-full px-7 py-8 md:px-11 md:py-10">
+      <div className="about-page-content relative z-10 h-full px-7 py-8 md:px-11 md:py-10">
         <div className="mb-7 flex items-center gap-3">
           <span className="h-px w-8 bg-[#d87999]" />
           <span className="font-['Poppins'] text-[10px] font-bold uppercase tracking-[0.25em] text-[#a05d78]">
@@ -122,7 +122,7 @@ function PageContent({ page, side = "left" }) {
 
 function PhotoContent({ page }) {
   return (
-    <div className="relative flex h-full flex-col bg-[#fffdf7] px-6 py-7 md:px-8 md:py-8">
+    <div className="about-photo-page relative flex h-full flex-col bg-[#fffdf7] px-6 py-7 md:px-8 md:py-8">
       <div className="mb-4 flex items-center justify-between">
         <span className="font-['Poppins'] text-[10px] font-bold uppercase tracking-[0.25em] text-[#a05d78]">
           Previous Editions
@@ -132,9 +132,9 @@ function PhotoContent({ page }) {
         </span>
       </div>
 
-      <div className="grid flex-1 grid-cols-[1.35fr_0.65fr] gap-4 md:gap-5">
-        <div className="relative overflow-hidden border border-[#e3d8cc] bg-[#eee5da] p-2 shadow-[0_8px_18px_rgba(76,49,63,0.1)]">
-          <div className="h-full min-h-[250px] overflow-hidden">
+      <div className="about-photo-grid grid flex-1 grid-cols-[1.35fr_0.65fr] gap-4 md:gap-5">
+        <div className="about-photo-large relative overflow-hidden border border-[#e3d8cc] bg-[#eee5da] p-2 shadow-[0_8px_18px_rgba(76,49,63,0.1)]">
+          <div className="about-photo-large-image h-full min-h-[250px] overflow-hidden">
             <img
               src={page.photos[0].src}
               alt={page.photos[0].alt}
@@ -151,9 +151,9 @@ function PhotoContent({ page }) {
           </span>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="relative overflow-hidden border border-[#e3d8cc] bg-white p-2 shadow-[0_8px_18px_rgba(76,49,63,0.08)]">
-            <div className="aspect-[4/5] overflow-hidden">
+        <div className="about-photo-details flex flex-col gap-4">
+          <div className="about-photo-small relative overflow-hidden border border-[#e3d8cc] bg-white p-2 shadow-[0_8px_18px_rgba(76,49,63,0.08)]">
+            <div className="about-photo-small-image aspect-[4/5] overflow-hidden">
               <img
                 src={page.photos[1].src}
                 alt={page.photos[1].alt}
@@ -162,7 +162,7 @@ function PhotoContent({ page }) {
             </div>
           </div>
 
-          <div className="flex flex-1 items-end">
+          <div className="about-photo-quote flex flex-1 items-end">
             <div className="w-full border-l-2 border-[#dd7e9d] pl-3">
               <p className="font-['Poppins'] text-lg font-medium leading-tight text-[#4b3d46]">
                 Learn.
@@ -256,7 +256,7 @@ function AboutSection() {
             src="/images/characters/marioPeeking.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-[-4px] right-[-14px] z-20 hidden h-40 w-auto md:block md:bottom-[-8px] md:right-[-20px] md:h-48 lg:right-[-80px] lg:h-56"
+            className="pointer-events-none absolute bottom-[-4px] right-[-14px] z-20 hidden h-40 w-auto xl:block md:bottom-[-8px] md:right-[-20px] md:h-48 lg:right-[-120px] lg:h-56"
           />
           <div className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 rotate-[0.7deg] bg-[#f0e4d3] shadow-lg" />
           <div className="pointer-events-none absolute inset-0 -translate-x-2 translate-y-1 rotate-[-0.5deg] bg-[#fff4e4] shadow-md" />
@@ -328,7 +328,7 @@ function AboutSection() {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center justify-between gap-3">
+          <div className="about-navigation mt-5 flex items-center justify-between gap-3">
             <button
               type="button"
               onClick={goPrevious}
@@ -339,7 +339,7 @@ function AboutSection() {
               <span>Previous</span>
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="about-page-indicators flex items-center gap-2">
               {pages.map((_, index) => (
                 <button
                   key={index}
@@ -361,7 +361,7 @@ function AboutSection() {
                       setDirection(null);
                     }, 750);
                   }}
-                  className="flex h-8 w-8 items-center justify-center transition-transform duration-200 hover:scale-110 disabled:pointer-events-none"
+                  className="about-page-indicator flex h-8 w-8 items-center justify-center transition-transform duration-200 hover:scale-110 disabled:pointer-events-none"
                 >
                   <img
                     src="/images/characters/mushroom.png"
@@ -483,6 +483,116 @@ function AboutSection() {
 
           to {
             transform: rotateY(180deg);
+          }
+        }
+
+        @media (max-width: 640px) {
+          #about .book {
+            height: 840px;
+          }
+
+          #about .book-spread {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+          }
+
+          #about .about-page-content {
+            padding: 1.25rem;
+          }
+
+          #about .about-page-content > div:first-child {
+            margin-bottom: 1.1rem;
+          }
+
+          #about .about-page-content h3 {
+            font-size: clamp(1.8rem, 8vw, 2.25rem);
+          }
+
+          #about .about-page-content > div:last-child {
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            line-height: 1.65;
+          }
+
+          #about .about-photo-page {
+            padding: 1rem;
+          }
+
+          #about .about-photo-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-rows: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 0.75rem;
+            min-height: 0;
+          }
+
+          #about .about-photo-large {
+            grid-column: 1 / -1;
+            min-height: 0;
+          }
+
+          #about .about-photo-large-image {
+            min-height: 0;
+          }
+
+          #about .about-photo-details {
+            grid-column: 1 / -1;
+            min-height: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+          }
+
+          #about .about-photo-small {
+            width: 40%;
+            height: 100%;
+            flex: none;
+          }
+
+          #about .about-photo-small-image {
+            height: 100%;
+            aspect-ratio: auto;
+          }
+
+          #about .about-photo-quote {
+            min-width: 0;
+            align-items: center;
+          }
+
+          #about .about-photo-quote p {
+            font-size: 1rem;
+          }
+
+          #about .about-navigation {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            row-gap: 0.5rem;
+          }
+
+          #about .about-navigation > button:first-child {
+            grid-column: 1;
+            grid-row: 1;
+            width: 100%;
+          }
+
+          #about .about-navigation > button:last-child {
+            grid-column: 2;
+            grid-row: 1;
+            width: 100%;
+          }
+
+          #about .about-page-indicators {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            justify-content: center;
+          }
+
+          #about .about-page-indicator {
+            width: 44px;
+            height: 44px;
+          }
+
+          #about .turning-sheet {
+            width: 100%;
           }
         }
       `}</style>

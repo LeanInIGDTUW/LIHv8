@@ -1,0 +1,534 @@
+.tracks-coming-soon {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 72px 20px 78px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 249, 250, .88), transparent 54%),
+        linear-gradient(180deg, #fcebed 0%, #f5dbe4 48%, #dff0fa 100%);
+    color: #40353e;
+}
+
+.tracks-coming-soon .tracks-coming-soon-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tracks-coming-soon .tracks-coming-soon-shell {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tracks-coming-soon .tracks-coming-soon-heading {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 720px);
+    margin: 0 auto;
+}
+
+.tracks-coming-soon .tracks-coming-soon-eyebrow {
+    margin: 0 0 10px;
+    color: #9a6078;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .24em;
+    line-height: 1.5;
+}
+
+.tracks-coming-soon .tracks-coming-soon-heading h2 {
+    margin: 0;
+    color: #40353e;
+    font-size: clamp(2.4rem, 5.4vw, 4.1rem);
+    font-weight: 700;
+    letter-spacing: -.06em;
+    line-height: 1.04;
+    text-wrap: balance;
+}
+
+.tracks-coming-soon .tracks-coming-soon-description {
+    max-width: 620px;
+    margin: 16px auto 0;
+    color: #705b6a;
+    font-size: .98rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+}
+
+.tracks-coming-soon .tracks-coming-soon-world {
+    position: relative;
+    width: min(100%, 920px);
+    height: 280px;
+    margin: 12px auto 0;
+    isolation: isolate;
+}
+
+.tracks-coming-soon .tracks-coming-soon-route {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.tracks-coming-soon .tracks-coming-soon-route path {
+    fill: none;
+    stroke: rgba(175, 125, 127, .64);
+    stroke-dasharray: 2 15;
+    stroke-linecap: round;
+    stroke-width: 5;
+}
+
+.tracks-coming-soon .tracks-coming-soon-cloud {
+    position: absolute;
+    width: 98px;
+    height: 28px;
+    border: 2px solid rgba(113, 99, 114, .2);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, .58);
+    box-shadow: inset 0 4px 0 rgba(255, 255, 255, .7);
+    animation: tracks-coming-soon-cloud-drift 28s ease-in-out infinite alternate;
+}
+
+.tracks-coming-soon .tracks-coming-soon-cloud::before,
+.tracks-coming-soon .tracks-coming-soon-cloud::after {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    border-radius: 50% 50% 0 0;
+    background: inherit;
+}
+
+.tracks-coming-soon .tracks-coming-soon-cloud::before {
+    left: 18px;
+    width: 34px;
+    height: 34px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-cloud::after {
+    right: 13px;
+    width: 43px;
+    height: 43px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-scene-cloud-one {
+    top: 30px;
+    left: 8%;
+    opacity: .8;
+}
+
+.tracks-coming-soon .tracks-coming-soon-scene-cloud-two {
+    top: 58px;
+    right: 8%;
+    opacity: .72;
+    animation-delay: -11s;
+    transform: scale(.7);
+}
+
+.tracks-coming-soon .tracks-coming-soon-sparkle {
+    position: absolute;
+    color: rgba(255, 255, 255, .95);
+    font-size: 21px;
+    text-shadow: 0 2px 0 rgba(172, 103, 137, .16);
+}
+
+.tracks-coming-soon .tracks-coming-soon-sparkle-left {
+    top: 24%;
+    left: 8%;
+}
+
+.tracks-coming-soon .tracks-coming-soon-sparkle-right {
+    top: 45%;
+    right: 8%;
+    font-size: 26px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-markers {
+    position: absolute;
+    inset: 0 0 10.35%;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: end;
+    pointer-events: none;
+}
+
+.tracks-coming-soon .tracks-coming-soon-marker {
+    position: relative;
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    justify-self: center;
+    margin-bottom: 0;
+    border: 3px solid #596d55;
+    border-radius: 50% 50% 42% 42%;
+    background: linear-gradient(180deg, #c8e981 0%, #8fbe69 57%, #70a65d 100%);
+    box-shadow: inset 5px 4px 0 rgba(255, 255, 255, .32), 0 5px 0 rgba(101, 76, 69, .12);
+}
+
+.tracks-coming-soon .tracks-coming-soon-marker:nth-child(2),
+.tracks-coming-soon .tracks-coming-soon-marker:nth-child(4) {
+    margin-bottom: 22px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-marker-lock {
+    position: relative;
+    display: block;
+    width: 19px;
+    height: 16px;
+    margin-top: 8px;
+    border: 2px solid #755b51;
+    border-radius: 4px;
+    background: linear-gradient(145deg, #fff5ce, #f2cf77);
+    box-shadow: 0 2px 0 rgba(88, 69, 65, .16);
+}
+
+.tracks-coming-soon .tracks-coming-soon-marker-lock::before {
+    position: absolute;
+    top: -13px;
+    left: 3px;
+    width: 9px;
+    height: 11px;
+    content: "";
+    border: 2px solid #755b51;
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.tracks-coming-soon .tracks-coming-soon-marker-lock span {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #755b51;
+}
+
+.tracks-coming-soon .tracks-coming-soon-mystery-block {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    z-index: 4;
+    display: grid;
+    width: 88px;
+    height: 88px;
+    place-items: center;
+    border: 5px solid #684c4e;
+    border-radius: 12px;
+    background:
+        linear-gradient(90deg, transparent 46%, #d79a35 47% 53%, transparent 54%),
+        linear-gradient(transparent 46%, #d79a35 47% 53%, transparent 54%),
+        linear-gradient(145deg, #ffe46a, #f7c13a 58%, #e7a747);
+    background-size: 34px 34px, 34px 34px, auto;
+    box-shadow: inset 8px 8px 0 rgba(255, 255, 225, .48), inset -7px -7px 0 rgba(112, 70, 57, .16), 0 9px 0 rgba(96, 77, 84, .17);
+    color: #9a6032;
+    font-family: ui-monospace, monospace;
+    font-size: 4.6rem;
+    font-weight: 1000;
+    line-height: 1;
+    translate: -50% 0;
+}
+
+.tracks-coming-soon .tracks-coming-soon-mystery-block::before {
+    position: absolute;
+    inset: 5px;
+    content: "";
+    border: 2px solid rgba(153, 96, 50, .18);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.tracks-coming-soon .tracks-coming-soon-mystery-block span {
+    position: relative;
+    z-index: 1;
+    margin-top: -3px;
+    text-shadow: 0 2px 0 rgba(255, 248, 191, .65);
+}
+
+.tracks-coming-soon .tracks-coming-soon-platform {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    height: 27px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-platform-grass {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 12px;
+    border: 3px solid #596d55;
+    border-radius: 7px 7px 0 0;
+    background: linear-gradient(180deg, #b7df6a, #70bc61);
+    box-shadow: inset 0 -3px 0 rgba(54, 126, 76, .26);
+}
+
+.tracks-coming-soon .tracks-coming-soon-platform-soil {
+    position: absolute;
+    inset: 12px 0 0;
+    border-top: 2px solid #9f5b45;
+    background:
+        linear-gradient(90deg, transparent 47%, rgba(108, 66, 57, .16) 48% 53%, transparent 54%),
+        linear-gradient(180deg, #bd7650, #b96d4d);
+    background-size: 42px 28px;
+}
+
+.tracks-coming-soon .tracks-coming-soon-coin {
+    position: absolute;
+    z-index: 4;
+    display: grid;
+    width: 24px;
+    height: 32px;
+    place-items: center;
+    border: 2px solid #b78134;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #e9aa3c, #fff07b 48%, #dfa13c);
+    box-shadow: inset 2px 0 rgba(255, 255, 255, .5), 0 3px 0 rgba(130, 89, 38, .16);
+    color: #a46c2e;
+    font-family: ui-monospace, monospace;
+    font-size: 18px;
+    font-weight: 900;
+    animation: tracks-coming-soon-coin-spin 2.8s ease-in-out infinite;
+}
+
+.tracks-coming-soon .tracks-coming-soon-coin-one {
+    top: 76px;
+    left: calc(50% - 92px);
+}
+
+.tracks-coming-soon .tracks-coming-soon-coin-two {
+    top: 86px;
+    right: calc(50% - 132px);
+    animation-delay: -1.4s;
+}
+
+.tracks-coming-soon .tracks-coming-soon-flag {
+    position: absolute;
+    right: 3%;
+    bottom: 25px;
+    z-index: 4;
+    width: 4px;
+    height: 70px;
+    border-radius: 3px;
+    background: #785b4e;
+}
+
+.tracks-coming-soon .tracks-coming-soon-flag i {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 35px;
+    height: 21px;
+    border: 2px solid #7a4e59;
+    border-radius: 2px 7px 7px 2px;
+    background: #ed7180;
+    clip-path: polygon(0 0, 100% 0, 76% 50%, 100% 100%, 0 100%);
+}
+
+.tracks-coming-soon .tracks-coming-soon-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 100%;
+    margin: 22px auto 0;
+    padding: 10px 17px;
+    border: 2px solid rgba(134, 98, 75, .23);
+    border-radius: 999px;
+    background: rgba(255, 251, 241, .84);
+    box-shadow: 0 5px 0 rgba(116, 83, 73, .1);
+}
+
+.tracks-coming-soon .tracks-coming-soon-status p {
+    margin: 0;
+    color: #765667;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    line-height: 1.5;
+}
+
+.tracks-coming-soon .tracks-coming-soon-status-light {
+    position: relative;
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e7a747;
+    box-shadow: 0 0 0 4px rgba(231, 167, 71, .16);
+}
+
+.tracks-coming-soon .tracks-coming-soon-signoff {
+    margin: 15px 0 0;
+    color: #806475;
+    font-size: .91rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+@keyframes tracks-coming-soon-cloud-drift {
+    from { translate: -7px 0; }
+    to { translate: 8px -4px; }
+}
+
+@keyframes tracks-coming-soon-coin-spin {
+    0%, 84%, 100% { transform: scaleX(1); }
+    42% { transform: scaleX(.18); }
+}
+
+@media (max-width: 700px) {
+    .tracks-coming-soon {
+        padding: 62px 18px 68px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-world {
+        width: min(100%, 600px);
+        height: 245px;
+        margin-top: 14px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-marker {
+        width: 46px;
+        height: 46px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-mystery-block {
+        top: 38px;
+        width: 76px;
+        height: 76px;
+        font-size: 4rem;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-coin-one {
+        left: calc(50% - 82px);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-coin-two {
+        right: calc(50% - 118px);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-flag {
+        right: 1%;
+    }
+}
+
+@media (max-width: 480px) {
+    .tracks-coming-soon {
+        padding: 54px 16px 62px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-heading h2 {
+        max-width: 390px;
+        margin: 0 auto;
+        font-size: clamp(2.25rem, 10vw, 2.8rem);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-description {
+        max-width: 390px;
+        margin-top: 13px;
+        font-size: .9rem;
+        line-height: 1.7;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-world {
+        width: 100%;
+        height: 205px;
+        margin-top: 13px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-markers {
+        inset: 0 0 10.35%;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-markers {
+        inset: 0 0 25px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-marker {
+        width: 38px;
+        height: 38px;
+        border-width: 2px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-marker-lock {
+        transform: scale(.82);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-marker:nth-child(2),
+    .tracks-coming-soon .tracks-coming-soon-marker:nth-child(4) {
+        margin-bottom: 15px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-mystery-block {
+        top: 33px;
+        width: 66px;
+        height: 66px;
+        border-width: 4px;
+        border-radius: 9px;
+        font-size: 3.5rem;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-coin {
+        width: 20px;
+        height: 27px;
+        font-size: 15px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-coin-one {
+        top: 68px;
+        left: calc(50% - 68px);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-coin-two {
+        top: 75px;
+        right: calc(50% - 98px);
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-scene-cloud-one {
+        top: 24px;
+        left: 0;
+        transform: scale(.72);
+        transform-origin: left center;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-scene-cloud-two {
+        top: 45px;
+        right: 0;
+        transform: scale(.58);
+        transform-origin: right center;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-status {
+        gap: 8px;
+        margin-top: 17px;
+        padding: 9px 12px;
+        border-radius: 16px;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-status p {
+        font-size: .63rem;
+        letter-spacing: .08em;
+    }
+
+    .tracks-coming-soon .tracks-coming-soon-signoff {
+        margin-top: 12px;
+        font-size: .85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tracks-coming-soon .tracks-coming-soon-cloud,
+    .tracks-coming-soon .tracks-coming-soon-coin {
+        animation: none;
+    }
+}
