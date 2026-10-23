@@ -398,7 +398,7 @@
 
 .hero-copy {
     position: absolute;
-    top: 43%;
+    top: 41.5%;
     left: 50%;
     z-index: 20;
     display: flex;
@@ -427,7 +427,7 @@
 .hero h1 {
     margin: 0;
     color: #fffdf8;
-    font-size: clamp(3.6rem, 10vw, 7.7rem);
+    font-size: clamp(3.6rem, 9vw, 6.8rem);
     font-weight: 1000;
     letter-spacing: -.08em;
     line-height: .78;
@@ -455,33 +455,37 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: min(320px, 100%);
+    min-height: 56px;
     cursor: pointer;
     margin-top: 0;
     border: 3px solid #b84f63;
     border-radius: 13px;
-    padding: 14px 20px 13px;
+    padding: 12px 18px 11px;
     background: #e96f82;
     box-shadow: 0 6px 0 #b84f63, 0 12px 20px rgba(122, 73, 83, .2);
     color: #fffdf8;
     text-decoration: none;
-    font-size: .9rem;
+    font-size: .85rem;
     font-weight: 950;
     text-transform: uppercase;
     letter-spacing: .08em;
+    white-space: nowrap;
     transition: transform .18s ease, box-shadow .18s ease;
 }
 
 .hero-ctas {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
 }
 
 .game-button img {
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
     flex: 0 0 auto;
     object-fit: contain;
 }

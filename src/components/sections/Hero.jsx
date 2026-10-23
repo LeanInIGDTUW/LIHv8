@@ -26,7 +26,7 @@ function Hero() {
               <img src={devfolioImage} alt="" aria-hidden="true" />
               Apply on Devfolio
             </GameButton>
-            <GameButton>
+            <GameButton href="https://discord.gg/W3esvKJf3">
               <img src={discordImage} alt="" aria-hidden="true" />
               Join Discord
             </GameButton>
