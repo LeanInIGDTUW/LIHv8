@@ -6,6 +6,7 @@ import TracksComingSoon from "./components/sections/TracksComingSoon.jsx";
 import PrizePoolSection from "./components/sections/PrizePoolSection.jsx";
 import SponsorsSection from "./components/sections/SponsorsSection.jsx";
 import GuidelinesSection from "./components/sections/GuidelinesSection.jsx";
+import Footer from "./components/sections/Footer.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <PrizePoolSection />
       <SponsorsSection />
       <GuidelinesSection />
+      <Footer />
     </>
   );
 }

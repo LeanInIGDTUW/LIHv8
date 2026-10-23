@@ -1,0 +1,211 @@
+.lih-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 0;
+  background-color: #b96d4d;
+  background-image:
+    linear-gradient(90deg, transparent 47%, rgba(108, 66, 57, .18) 48% 53%, transparent 54%),
+    linear-gradient(transparent 47%, rgba(108, 66, 57, .18) 48% 53%, transparent 54%),
+    radial-gradient(#dc9768 14%, transparent 17%);
+  background-size: 36px 29px, 36px 29px, 31px 31px;
+  padding: 58px 24px 0;
+  color: #332934;
+}
+
+.lih-footer::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 8px;
+  background: radial-gradient(17px 11px at 18px 16px, transparent 60%, #735146 63% 70%, transparent 73%) 0 0 / 36px 16px repeat-x;
+  content: "";
+}
+
+.lih-footer-shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.lih-footer-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 48px;
+  padding-bottom: 28px;
+}
+
+.lih-footer-brand {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 16px;
+  max-width: 650px;
+}
+
+.lih-footer-logo-link {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.lih-footer-logo-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(15, 12, 18, .28);
+}
+
+.lih-footer-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, .55);
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.lih-footer-brand h2 {
+  margin: 0;
+  color: #332934;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.2;
+}
+
+.lih-footer-tagline {
+  margin: 5px 0 0;
+  color: #713d43;
+  font-size: .82rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.lih-footer-intro {
+  grid-column: 1 / -1;
+  max-width: 570px;
+  margin: 13px 0 0;
+  color: #4f3932;
+  font-size: .84rem;
+  line-height: 1.65;
+}
+
+.lih-footer-social h3 {
+  margin: 0 0 12px;
+  color: #332934;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.lih-footer-social ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lih-footer-social a {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid rgba(71, 48, 37, .3);
+  border-radius: 10px;
+  background: rgba(255, 245, 220, .7);
+  color: #332934;
+  font-size: .76rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color .18s ease, background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.lih-footer-social a svg {
+  flex: 0 0 auto;
+  color: #713d43;
+}
+
+.lih-footer-social a:hover {
+  transform: translateY(-2px);
+  border-color: #596d55;
+  background: #fff3cf;
+  color: #332934;
+}
+
+.lih-footer-logo-link:focus-visible,
+.lih-footer-social a:focus-visible {
+  outline: 3px solid #332934;
+  outline-offset: 4px;
+}
+
+.lih-footer-bottom {
+  display: flex;
+  min-height: 49px;
+  align-items: center;
+  border-top: 1px solid rgba(242, 221, 231, .16);
+  color: #4f3932;
+  font-size: .72rem;
+}
+
+.lih-footer-bottom p {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .lih-footer-main {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 24px;
+    padding-bottom: 22px;
+  }
+
+  .lih-footer-brand {
+    justify-self: stretch;
+    max-width: 560px;
+  }
+
+  .lih-footer-social {
+    text-align: center;
+  }
+
+  .lih-footer-social ul {
+    justify-content: center;
+  }
+
+  .lih-footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .lih-footer {
+    padding: 52px 18px 0;
+  }
+
+  .lih-footer-brand {
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .lih-footer-logo-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lih-footer-logo-link,
+  .lih-footer-social a {
+    transition: none;
+  }
+}

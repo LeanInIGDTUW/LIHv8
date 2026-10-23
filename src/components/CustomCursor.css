@@ -1,0 +1,34 @@
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.pixel-cursor-enabled,
+  body.pixel-cursor-enabled * {
+    cursor: none !important;
+  }
+
+  .pixel-cursor {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 24px;
+    pointer-events: none;
+    transform: translate(-1px, -1px);
+    image-rendering: pixelated;
+    transition: transform 100ms ease;
+  }
+
+  .pixel-cursor svg {
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .pixel-cursor.hovering {
+    transform: translate(-1px, -1px) scale(1.08);
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .pixel-cursor {
+    display: none;
+  }
+}

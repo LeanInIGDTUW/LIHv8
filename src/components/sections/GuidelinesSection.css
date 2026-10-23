@@ -45,13 +45,13 @@
 
 .guidelines-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 .guideline-card {
   min-width: 0;
-  min-height: 176px;
-  padding: 17px 16px;
+  min-height: 148px;
+  padding: 14px 15px;
   border: 1px solid #eedfe5;
   border-radius: 18px;
   background: rgba(255,255,255,.58);
@@ -74,7 +74,7 @@
   letter-spacing: .12em;
 }
 .guideline-card h3 {
-  margin: 13px 0 8px;
+  margin: 10px 0 6px;
   color: #43353d;
   font-size: clamp(.94rem, 1.25vw, 1.1rem);
   font-weight: 600;
@@ -158,6 +158,18 @@
   font-size: .9rem;
   line-height: 1.65;
 }
+.guidelines-faq-answer a {
+  color: #70485d;
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.guidelines-faq-answer a:hover { color: #493244; }
+.guidelines-faq-answer a:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid #8c6074;
+  outline-offset: 3px;
+}
 
 .guidelines-ground {
   position: absolute;
@@ -208,12 +220,12 @@
 @media (max-width: 700px) {
   .guidelines-section { padding: 64px 16px 96px; }
   .guidelines-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .guideline-card { min-height: 0; padding: 17px; }
+  .guideline-card { min-height: 0; padding: 14px; }
   .guidelines-faq-layout { margin-top: 32px; }
 }
 @media (max-width: 470px) {
   .guidelines-grid { grid-template-columns: 1fr; }
-  .guideline-card h3 { margin: 12px 0 6px; }
+  .guideline-card h3 { margin: 9px 0 5px; }
   .guidelines-faq-question { min-height: 58px; padding: 12px 16px; }
   .guidelines-faq-answer p { padding: 0 16px 15px; }
 }

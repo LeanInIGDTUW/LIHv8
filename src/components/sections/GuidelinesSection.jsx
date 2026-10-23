@@ -3,20 +3,45 @@ import { motion, useReducedMotion } from "framer-motion";
 import "./GuidelinesSection.css";
 
 const guidelines = [
-  { number: "01", title: "Who can participate?", description: "Hackers from any college can join." },
-  { number: "02", title: "Team requirement", description: "Each team needs at least 1 female member." },
-  { number: "03", title: "Hackathon format", description: "The hackathon will be conducted in hybrid mode." },
-  { number: "04", title: "Build phase", description: "Teams build their product online over the weekend." },
-  { number: "05", title: "Final pitch", description: "Top teams pitch their projects offline." },
+  { number: "01", title: "Team size", description: "1–4 members" },
+  { number: "02", title: "Registration fee", description: "Absolutely free" },
+  { number: "03", title: "Hackathon mode", description: "Hybrid" },
+  { number: "04", title: "Team Composition", description: "Every team must have at least one female member" },
 ];
 
 const faqs = [
-  { question: "How do I register?", answer: "Registration steps and dates will be added here soon." },
-  { question: "Is there a participation fee?", answer: "The official fee information will be confirmed here." },
-  { question: "Can teammates be from different colleges?", answer: "Cross-college team rules will be shared here soon." },
-  { question: "What will our team need to submit?", answer: "Submission requirements and deadlines will be added here." },
-  { question: "What happens during the online build phase?", answer: "The detailed schedule and check-in process will be posted here." },
-  { question: "Where will the finale take place?", answer: "Venue and travel information will be announced here." },
+  {
+    question: "Who can participate in Lean In Hacks 8.0?",
+    answer: "Students currently enrolled in a university program, from any year, course, or specialization, can participate.",
+  },
+  {
+    question: "What are the team requirements?",
+    answer: "Teams must have 1–4 members, with at least one female member. Inter-college and inter-specialization teams are allowed.",
+  },
+  {
+    question: "Can beginners participate?",
+    answer: "Absolutely! The dedicated Beginner’s Track is designed for first-year students and follows an ideathon format. A prototype or UI/UX design is sufficient; a complete technical implementation isn't required.",
+  },
+  {
+    question: "When will the tracks and problem statements be released?",
+    answer: "They will be announced soon. Stay tuned for updates!",
+  },
+  {
+    question: "Where will the hackathon take place?",
+    answer: "The hackathon will be conducted in hybrid mode, with the final pitching round held offline for shortlisted teams.",
+  },
+  {
+    question: "Where will announcements and updates be shared?",
+    answer: (
+      <>
+        Our Discord server is the primary communication channel.{" "}
+        <a href="https://discord.gg/W3esvKJf3" target="_blank" rel="noopener noreferrer">
+          Join it
+        </a>{" "}
+        for announcements, deadlines, schedules, and important event updates.
+      </>
+    ),
+  },
 ];
 
 function GuidelinesSection() {
