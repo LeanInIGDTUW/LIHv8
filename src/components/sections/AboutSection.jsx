@@ -329,15 +329,17 @@ function AboutSection() {
           </div>
 
           <div className="about-navigation mt-5 flex items-center justify-between gap-3">
-            <button
-              type="button"
-              onClick={goPrevious}
-              disabled={currentSpread === 0 || turning}
-              className="inline-flex w-[110px] items-center justify-center gap-1 whitespace-nowrap font-['Poppins'] text-[10px] font-semibold uppercase tracking-[0.14em] text-[#6e5361] transition-all hover:-translate-x-1 disabled:pointer-events-none disabled:opacity-30 md:text-xs"
-            >
-              <span aria-hidden="true">←</span>
-              <span>Previous</span>
-            </button>
+            {currentSpread > 0 && (
+              <button
+                type="button"
+                onClick={goPrevious}
+                aria-disabled={turning}
+                className="about-nav-button about-nav-previous inline-flex w-[110px] items-center justify-center gap-1 whitespace-nowrap font-['Poppins'] text-[10px] font-semibold uppercase tracking-[0.14em] hover:-translate-x-1 md:text-xs"
+              >
+                <span aria-hidden="true">←</span>
+                <span>Previous</span>
+              </button>
+            )}
 
             <div className="about-page-indicators flex items-center gap-2">
               {pages.map((_, index) => (
@@ -377,20 +379,58 @@ function AboutSection() {
               ))}
             </div>
 
-            <button
-              type="button"
-              onClick={goNext}
-              disabled={currentSpread === totalSpreads - 1 || turning}
-              className="inline-flex w-[110px] items-center justify-center gap-1 whitespace-nowrap font-['Poppins'] text-[10px] font-semibold uppercase tracking-[0.14em] text-[#6e5361] transition-all hover:translate-x-1 disabled:pointer-events-none disabled:opacity-30 md:text-xs"
-            >
-              <span>Next</span>
-              <span aria-hidden="true">→</span>
-            </button>
+            {currentSpread < totalSpreads - 1 && (
+              <button
+                type="button"
+                onClick={goNext}
+                aria-disabled={turning}
+                className="about-nav-button about-nav-next inline-flex w-[110px] items-center justify-center gap-1 whitespace-nowrap font-['Poppins'] text-[10px] font-semibold uppercase tracking-[0.14em] hover:translate-x-1 md:text-xs"
+              >
+                <span>Next</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
 
       <style>{`
+        #about .about-navigation {
+          position: relative;
+          z-index: 30;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+          align-items: center;
+        }
+
+        #about .about-nav-previous {
+          grid-column: 1;
+          justify-self: start;
+        }
+
+        #about .about-page-indicators {
+          grid-column: 2;
+          justify-self: center;
+        }
+
+        #about .about-nav-next {
+          grid-column: 3;
+          justify-self: end;
+        }
+
+        #about .about-nav-button {
+          color: #6e5361;
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          visibility: visible;
+          opacity: 1;
+        }
+
+        #about .about-nav-button[aria-disabled="true"] {
+          cursor: default;
+        }
+
         .book {
           position: relative;
           width: 100%;
@@ -568,13 +608,13 @@ function AboutSection() {
             row-gap: 0.5rem;
           }
 
-          #about .about-navigation > button:first-child {
+          #about .about-nav-previous {
             grid-column: 1;
             grid-row: 1;
             width: 100%;
           }
 
-          #about .about-navigation > button:last-child {
+          #about .about-nav-next {
             grid-column: 2;
             grid-row: 1;
             width: 100%;
