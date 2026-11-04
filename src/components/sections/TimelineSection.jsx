@@ -98,6 +98,7 @@ function TimelineScenery() {
 
 function TimelineCard({ round, revealed, impacted, cardRef, index }) {
   const dustParticles = useMemo(createDustParticles, []);
+  const [frontVisible, setFrontVisible] = useState(true);
 
   return (
     <motion.div
@@ -114,12 +115,17 @@ function TimelineCard({ round, revealed, impacted, cardRef, index }) {
         className="timeline-card"
         animate={{ rotateX: revealed ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 230, damping: 20 }}
+        onAnimationComplete={() => {
+          if (revealed) setFrontVisible(false);
+        }}
       >
-        <div className="timeline-card-face timeline-card-front">
-          <span className="timeline-brick-seam seam-one" />
-          <span className="timeline-brick-seam seam-two" />
-          <span className="timeline-question-block">?</span>
-        </div>
+        {frontVisible && (
+          <div className="timeline-card-face timeline-card-front">
+            <span className="timeline-brick-seam seam-one" />
+            <span className="timeline-brick-seam seam-two" />
+            <span className="timeline-question-block">?</span>
+          </div>
+        )}
 
         <div className="timeline-card-face timeline-card-back">
           <div>
