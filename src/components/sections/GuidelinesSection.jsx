@@ -28,7 +28,11 @@ const faqs = [
   },
   {
     question: "Where will the hackathon take place?",
-    answer: "The hackathon will be conducted in hybrid mode, with the final pitching round held offline for shortlisted teams.",
+    answer: "The hackathon will be conducted in hybrid mode. The finale will be hosted onsite, with a virtual connection available for participants who cannot attend in person.",
+  },
+  {
+    question: "Can I participate if I’m based outside Delhi?",
+    answer: "Absolutely. If you cannot travel for the onsite finale, we’ll connect you virtually to the venue so you can present and take part remotely. Your location should not hold you back.",
   },
   {
     question: "Where will announcements and updates be shared?",
