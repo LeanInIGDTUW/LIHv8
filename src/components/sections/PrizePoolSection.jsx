@@ -34,8 +34,8 @@ function PrizePoolSection() {
           <p className="prize-pool-eyebrow">LEVEL REWARDS</p>
           <h2 id="prize-pool-title">Prize Pool</h2>
           <p className="prize-pool-intro">
-            Four tracks, two winning spots in each. The treasure is almost ready
-            to be revealed.
+            Every bold idea deserves a moment in the spotlight. Stay tuned as
+            the prize pool takes shape.
           </p>
         </header>
 
@@ -59,8 +59,8 @@ function PrizePoolSection() {
         <div className="prize-pool-announcement">
           <span className="prize-pool-announcement-coin" aria-hidden="true">✦</span>
           <div>
-            <strong>Treasure reveal coming soon!</strong>
-            <p>Prize details for each winning team will be announced here.</p>
+            <strong>Prize reveal coming soon!</strong>
+            <p>More details will be announced here.</p>
           </div>
         </div>
 

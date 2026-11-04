@@ -3,9 +3,10 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Pipe from "../objects/Pipe.jsx";
 
 const rounds = [
-  { number: "01", name: "Ideation", date: "31st Oct", side: "left" },
-  { number: "02", name: "Prototype", date: "1st Nov", side: "right" },
-  { number: "03", name: "Finale", date: "2nd Nov", side: "left" },
+  { number: "01", name: "Opening Ceremony", date: "20th Nov", side: "left" },
+  { number: "02", name: "Ideation", date: "21st Nov", side: "right" },
+  { number: "03", name: "Prototype", date: "22nd Nov", side: "left" },
+  { number: "04", name: "Finale", date: "TBD", side: "right" },
 ];
 
 const wait = (milliseconds) =>
@@ -122,10 +123,12 @@ function TimelineCard({ round, revealed, impacted, cardRef, index }) {
 
         <div className="timeline-card-face timeline-card-back">
           <div>
-            <p>Round {round.number}</p>
+            <p>Stage {round.number}</p>
             <h3>{round.name}</h3>
           </div>
-          <time>{round.date}</time>
+          {round.date === "TBD"
+            ? <span className="timeline-date">TBD</span>
+            : <time>{round.date}</time>}
         </div>
       </motion.div>
 
@@ -225,7 +228,7 @@ function TimelineSection() {
       if (endY - startY < 12) return;
 
       scrollStartedAt = performance.now();
-      const scrollDuration = 1900;
+      const scrollDuration = 2600;
       const advanceScroll = (now) => {
         if (cancelled) return;
         const progress = Math.min((now - scrollStartedAt) / scrollDuration, 1);
@@ -250,7 +253,7 @@ function TimelineSection() {
         const cardBox = card.getBoundingClientRect();
 
         return {
-          x: cardBox.left - stageBox.left + cardBox.width * [0.27, 0.72, 0.36][index] - starSize / 2,
+          x: cardBox.left - stageBox.left + cardBox.width * [0.27, 0.72, 0.36, 0.64][index] - starSize / 2,
           y: cardBox.top - stageBox.top - starSize + 5,
         };
       });
@@ -370,7 +373,7 @@ function TimelineSection() {
         <div className="timeline-heading">
           <p ref={eyebrowRef}>Level Select</p>
           <h2 id="timeline-title">Hackathon Timeline</h2>
-          <span>Three rounds. One winning journey.</span>
+          <span>Four stages. One adventure.</span>
         </div>
 
         <div ref={stageRef} className="timeline-stage">
