@@ -256,6 +256,15 @@
   .prize-track-place strong { font-size: .64rem; }
 }
 
+@media (max-width: 360px) {
+  .prize-track-place strong {
+    max-width: 66px;
+    white-space: normal;
+    text-align: right;
+    line-height: 1.2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .prize-pool-cloud { animation: none; }
 }

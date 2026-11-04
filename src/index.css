@@ -1036,3 +1036,9 @@ a:hover,
         display: none;
     }
 }
+
+@media (max-width: 380px) {
+    .metric-label strong {
+        font-size: clamp(1.35rem, 7vw, 1.65rem);
+    }
+}
