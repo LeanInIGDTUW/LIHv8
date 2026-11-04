@@ -256,7 +256,7 @@ function AboutSection() {
             src="/images/characters/marioPeeking.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-[-4px] right-[-14px] z-20 hidden h-40 w-auto xl:block md:bottom-[-8px] md:right-[-20px] md:h-48 lg:right-[-120px] lg:h-56"
+            className="pointer-events-none absolute bottom-[-4px] right-[-14px] z-20 hidden h-40 w-auto xl:block md:bottom-[-8px] md:right-[-20px] md:h-48 lg:right-[-72px] lg:h-56"
           />
           <div className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 rotate-[0.7deg] bg-[#f0e4d3] shadow-lg" />
           <div className="pointer-events-none absolute inset-0 -translate-x-2 translate-y-1 rotate-[-0.5deg] bg-[#fff4e4] shadow-md" />
