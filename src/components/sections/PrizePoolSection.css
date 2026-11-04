@@ -182,6 +182,43 @@
   box-shadow: 0 7px 0 rgba(104, 73, 72, .12), inset 4px 4px 0 rgba(255, 255, 255, .55);
 }
 
+.prize-position-card {
+  display: flex;
+  min-height: 122px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.prize-position-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 3px solid #a16d32;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #efb13e, #ffe781 50%, #efb13e);
+  color: #9f6830;
+  font-size: 25px;
+  line-height: 1;
+  box-shadow: inset 3px 0 #fff7b5;
+}
+
+.prize-position-card h3 {
+  margin: 0;
+  color: #43363e;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+}
+
+.prize-position-card p {
+  margin: 3px 0 0;
+  color: #946578;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
 .prize-track-heading {
   display: flex;
   align-items: baseline;

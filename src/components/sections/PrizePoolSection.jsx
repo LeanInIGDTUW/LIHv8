@@ -2,11 +2,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import Coin from "../objects/Coin.jsx";
 import "./PrizePoolSection.css";
 
+/* Track-specific prize cards are saved here for the full prize reveal.
 const prizeTracks = [
   { number: "01", name: "Open Innovation", theme: "innovation" },
   { number: "02", name: "Sustainable Development Goals", theme: "sustainability" },
   { number: "03", name: "Emerging Technologies", theme: "technology" },
   { number: "04", name: "Beginner’s Track", theme: "beginner" },
+];
+*/
+
+const prizePositions = [
+  { name: "1st Position", icon: "★" },
+  { name: "Runner-up", icon: "☆" },
 ];
 
 function PrizePoolSection() {
@@ -57,6 +64,26 @@ function PrizePoolSection() {
           </div>
         </div>
 
+        <div className="prize-pool-grid" aria-label="Prize positions">
+          {prizePositions.map((position, index) => (
+            <motion.article
+              key={position.name}
+              className="prize-track-card prize-position-card"
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.08 }}
+            >
+              <span className="prize-position-icon" aria-hidden="true">{position.icon}</span>
+              <div>
+                <h3>{position.name}</h3>
+                <p>Coming Soon</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Track-specific prize cards are preserved for when individual prizes are announced.
         <div className="prize-pool-grid" aria-label="Prizes by track">
           {prizeTracks.map((track, index) => (
             <motion.article
@@ -86,6 +113,7 @@ function PrizePoolSection() {
             </motion.article>
           ))}
         </div>
+        */}
       </div>
     </section>
   );
