@@ -16,13 +16,13 @@ const pages = [
     ),
     photos: [
       {
-        src: "/images/lih_prev_editions/Screenshot%202026-09-26%20163300.png",
-        alt: "Lean In Hacks community gathering",
+        src: "/images/lih_prev_editions/where-it-started-main.jpeg",
+        alt: "Lean In Hacks participants and mentors at the event",
         type: "large",
       },
       {
-        src: "/images/lih_prev_editions/Screenshot%202026-09-26%20171332.png",
-        alt: "Lean In Hacks early edition moments",
+        src: "/images/lih_prev_editions/where-it-started-secondary.jpeg",
+        alt: "Lean In Hacks participants celebrating with an award",
         type: "small",
       },
     ],
@@ -42,8 +42,8 @@ const pages = [
     ),
     photos: [
       {
-        src: "/images/lih_prev_editions/Screenshot%202026-09-26%20163638.png",
-        alt: "Lean In Hacks team collaboration moment",
+        src: "/images/lih_prev_editions/built-by-people-main.jpg",
+        alt: "Lean In Hacks participants discussing a project together",
         type: "wide",
       },
       {
@@ -76,6 +76,25 @@ const pages = [
         type: "small",
       },
     ],
+  },
+  {
+    type: "faculty",
+    eyebrow: "04 / OUR GUIDANCE",
+    title: "Our Faculty Coordinator",
+    text: (
+      <>
+        Ms. Karuna Kadian is the Faculty Coordinator of Lean In IGDTUW,
+        providing continuous guidance and support to the society. Her
+        mentorship and encouragement help us navigate our initiatives, explore
+        new opportunities, and create an environment where every member feels
+        empowered to learn, contribute, and grow. We are grateful for her
+        constant support and valuable guidance in our journey.
+      </>
+    ),
+    photo: {
+      src: "/images/people/karuna-kadian.jpeg",
+      alt: "Ms. Karuna Kadian, Faculty Coordinator of Lean In IGDTUW",
+    },
   },
 ];
 
@@ -121,6 +140,25 @@ function PageContent({ page, side = "left" }) {
 }
 
 function PhotoContent({ page }) {
+  if (page.type === "faculty") {
+    return (
+      <div className="about-faculty-page relative flex h-full flex-col bg-[#fffdf7] px-6 py-7 md:px-8 md:py-8">
+        <span className="font-['Poppins'] text-[10px] font-bold uppercase tracking-[0.25em] text-[#a05d78]">
+          Faculty Coordinator
+        </span>
+        <figure className="about-faculty-figure">
+          <div className="about-faculty-frame">
+            <img src={page.photo.src} alt={page.photo.alt} />
+          </div>
+          <figcaption>
+            <strong>Ms. Karuna Kadian</strong>
+            <span>Lean In IGDTUW</span>
+          </figcaption>
+        </figure>
+      </div>
+    );
+  }
+
   return (
     <div className="about-photo-page relative flex h-full flex-col bg-[#fffdf7] px-6 py-7 md:px-8 md:py-8">
       <div className="mb-4 flex items-center justify-between">
@@ -463,6 +501,53 @@ function AboutSection() {
           overflow: hidden;
         }
 
+        #about .about-faculty-figure {
+          display: flex;
+          flex: 1;
+          min-height: 0;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin: 0;
+        }
+
+        #about .about-faculty-frame {
+          width: min(216px, 100%);
+          aspect-ratio: 1;
+          padding: 7px;
+          border: 1px solid #d7c7bd;
+          background: #fffaf1;
+          box-shadow: 0 8px 18px rgba(76, 49, 63, .12);
+        }
+
+        #about .about-faculty-frame img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        #about .about-faculty-figure figcaption {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+          color: #4b3d46;
+          font-family: "Poppins", sans-serif;
+          text-align: center;
+        }
+
+        #about .about-faculty-figure figcaption strong {
+          font-size: 1.05rem;
+          font-weight: 600;
+        }
+
+        #about .about-faculty-figure figcaption span {
+          color: #a05d78;
+          font-size: .75rem;
+        }
+
         .turning-sheet {
           position: absolute;
           top: 0;
@@ -568,6 +653,10 @@ function AboutSection() {
             margin-top: 1rem;
             font-size: 0.82rem;
             line-height: 1.65;
+          }
+
+          #about .about-faculty-page {
+            padding: 1rem;
           }
 
           #about .about-photo-page {
