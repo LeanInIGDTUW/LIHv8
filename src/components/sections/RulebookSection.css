@@ -1,0 +1,107 @@
+.rulebook-section {
+  padding: 54px 20px;
+  background: linear-gradient(180deg, #fcebed, #f9dfe5);
+  color: #40353e;
+  font-family: "Poppins", sans-serif;
+}
+
+.rulebook-card {
+  display: flex;
+  width: min(980px, 100%);
+  min-height: 184px;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto;
+  padding: 28px 34px;
+  border: 3px solid #765454;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff9eb, #ffedcb);
+  box-shadow: 0 8px 0 rgba(104, 73, 72, .14), inset 4px 4px 0 rgba(255, 255, 255, .62);
+}
+
+.rulebook-icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 3px solid #9a724a;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffe46a, #f3ba48);
+  color: #795541;
+  box-shadow: inset 4px 4px 0 rgba(255, 255, 225, .45), 0 4px 0 rgba(96, 77, 84, .13);
+}
+
+.rulebook-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.rulebook-eyebrow {
+  margin: 0 0 5px;
+  color: #a36663;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+
+.rulebook-copy h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: 1.15;
+}
+
+.rulebook-description {
+  max-width: 540px;
+  margin: 9px 0 0;
+  color: #765f6d;
+  font-size: .85rem;
+  line-height: 1.6;
+}
+
+.rulebook-action {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.rulebook-action a {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 17px;
+  border: 3px solid #b84f63;
+  border-radius: 10px;
+  background: #e96f82;
+  color: #fffaf5;
+  font-size: .8rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 rgba(139, 75, 86, .28);
+  text-decoration: none;
+}
+
+.rulebook-action a:focus-visible {
+  outline: 3px solid #765454;
+  outline-offset: 4px;
+}
+
+@media (max-width: 720px) {
+  .rulebook-section { padding: 42px 16px; }
+  .rulebook-card { flex-wrap: wrap; gap: 14px; padding: 22px; }
+  .rulebook-icon { width: 52px; height: 52px; }
+  .rulebook-copy { flex: 1 1 calc(100% - 70px); }
+  .rulebook-action { width: 100%; align-items: stretch; }
+}
+
+@media (max-width: 380px) {
+  .rulebook-card { padding: 18px; }
+  .rulebook-copy h2 { font-size: 1.45rem; }
+  .rulebook-description { font-size: .8rem; }
+}

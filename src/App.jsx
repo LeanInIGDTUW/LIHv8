@@ -1,4 +1,5 @@
 import Hero from "./components/sections/Hero.jsx";
+import RulebookSection from "./components/sections/RulebookSection.jsx";
 import AboutSection from "./components/sections/AboutSection.jsx";
 import MetricsSection from "./components/sections/MetricsSection.jsx";
 import TimelineSection from "./components/sections/TimelineSection.jsx";
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Hero />
+      <RulebookSection />
       <AboutSection />
       <MetricsSection />
       <TimelineSection />
