@@ -42,12 +42,12 @@ function Footer() {
             </a>
             <div>
               <h2 id="lih-footer-title">Lean In @ IGDTUW</h2>
-              <p className="lih-footer-tagline">We rise by lifting others!</p>
+              <p className="lih-footer-tagline"><strong>We rise by lifting others!</strong></p>
             </div>
-            <p className="lih-footer-intro">
+            <p className="lih-footer-intro"><strong>
               Lean In is one of IGDTUW&apos;s oldest technical societies,
               fostering technology, mentorship, sisterhood, and peer learning.
-            </p>
+            </strong></p>
           </div>
 
           <nav className="lih-footer-social" aria-label="Stay Connected">
@@ -70,7 +70,7 @@ function Footer() {
           </nav>
         </div>
         <div className="lih-footer-bottom">
-          <p>© {new Date().getFullYear()} Lean In @ IGDTUW. All rights reserved.</p>
+          <p><strong>© {new Date().getFullYear()} Lean In @ IGDTUW. All rights reserved.</strong></p>
         </div>
       </div>
     </footer>

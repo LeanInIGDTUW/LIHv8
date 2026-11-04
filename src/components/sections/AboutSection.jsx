@@ -261,7 +261,7 @@ function AboutSection() {
           <div className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 rotate-[0.7deg] bg-[#f0e4d3] shadow-lg" />
           <div className="pointer-events-none absolute inset-0 -translate-x-2 translate-y-1 rotate-[-0.5deg] bg-[#fff4e4] shadow-md" />
 
-          <div className="book relative h-[470px] overflow-hidden bg-[#fffaf1] shadow-[0_24px_55px_rgba(76,49,63,0.2)]">
+          <div className={`book relative h-[470px] overflow-hidden bg-[#fffaf1] shadow-[0_24px_55px_rgba(76,49,63,0.2)]${turning ? " is-turning" : ""}`}>
             <div className="book-spread">
               <div className="book-page left-page">
                 <PageContent page={currentPage} side="left" />
@@ -526,6 +526,12 @@ function AboutSection() {
           }
         }
 
+        @keyframes mobileSpreadTurn {
+          0%, 35% { opacity: 1; }
+          48%, 52% { opacity: 0; }
+          65%, 100% { opacity: 1; }
+        }
+
         @media (max-width: 640px) {
           #about .book {
             height: 840px;
@@ -534,6 +540,16 @@ function AboutSection() {
           #about .book-spread {
             grid-template-columns: minmax(0, 1fr);
             grid-template-rows: repeat(2, minmax(0, 1fr));
+          }
+
+          #about .next-spread,
+          #about .previous-spread,
+          #about .turning-sheet {
+            display: none;
+          }
+
+          #about .book.is-turning > .book-spread:first-child {
+            animation: mobileSpreadTurn 750ms ease-in-out;
           }
 
           #about .about-page-content {
@@ -631,9 +647,6 @@ function AboutSection() {
             height: 44px;
           }
 
-          #about .turning-sheet {
-            width: 100%;
-          }
         }
       `}</style>
     </section>
