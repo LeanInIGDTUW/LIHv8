@@ -990,8 +990,8 @@
     }
 
     .object-pipe-center-tall {
-        bottom: 63px;
-        left: 62%;
+        bottom: 52px;
+        left: calc(72% - 52.5px);
         transform: scale(.58);
     }
 
