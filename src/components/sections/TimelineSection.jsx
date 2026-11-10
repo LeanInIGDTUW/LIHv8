@@ -1,12 +1,24 @@
-import { animate, motion, useInView } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Pipe from "../objects/Pipe.jsx";
 
 const rounds = [
-  { number: "01", name: "Opening Ceremony", date: "20th Nov", side: "left" },
-  { number: "02", name: "Ideation", date: "21st Nov", side: "right" },
-  { number: "03", name: "Prototype", date: "22nd Nov", side: "left" },
-  { number: "04", name: "Finale", date: "TBD", side: "right" },
+  {
+    number: "01", name: "Opening Ceremony", date: "20th Nov", side: "left",
+    details: <>We kick off with an <strong>online opening ceremony</strong> covering the format, tracks and timelines, followed by the <strong>official unveiling of the problem statements</strong>. Teams can then choose a challenge and prepare for the next round.</>,
+  },
+  {
+    number: "02", name: "Ideation", date: "21st Nov", side: "right",
+    details: <>This <strong>online, non-eliminatory</strong> round takes place on Discord. Teams share their ideas with mentors, receive <strong>constructive feedback</strong> and refine their approach. No submission is required; it counts for <strong>10% of the overall score</strong>.</>,
+  },
+  {
+    number: "03", name: "Prototype", date: "22nd Nov", side: "left",
+    details: <>In this <strong>online, eliminatory</strong> round, teams build a <strong>functional prototype or MVP</strong> and submit their repository, documentation, presentation and demo. A <strong>judging panel</strong> selects the finalists; this round counts for <strong>90% of the overall score</strong>.</>,
+  },
+  {
+    number: "04", name: "Finale", date: "TBD", side: "right",
+    details: <>Shortlisted teams present their prototypes <strong>offline</strong> to an <strong>expert judging panel</strong> (<strong>venue: TBD</strong>). The event closes with the <strong>announcement of winners and prize distribution</strong>. Tentative date: <strong>28 November 2026</strong>.</>,
+  },
 ];
 
 const wait = (milliseconds) =>
@@ -96,9 +108,10 @@ function TimelineScenery() {
   );
 }
 
-function TimelineCard({ round, revealed, impacted, cardRef, index }) {
+function TimelineCard({ round, revealed, impacted, expanded, canToggle, onToggle, cardRef, index }) {
   const dustParticles = useMemo(createDustParticles, []);
   const [frontVisible, setFrontVisible] = useState(true);
+  const reducedMotion = useReducedMotion();
 
   return (
     <motion.div
@@ -127,15 +140,25 @@ function TimelineCard({ round, revealed, impacted, cardRef, index }) {
           </div>
         )}
 
-        <div className="timeline-card-face timeline-card-back">
-          <div>
-            <p>Stage {round.number}</p>
-            <h3>{round.name}</h3>
-          </div>
-          {round.date === "TBD"
-            ? <span className="timeline-date">TBD</span>
-            : <time>{round.date}</time>}
-        </div>
+        <button
+          className="timeline-card-face timeline-card-back"
+          type="button"
+          disabled={!canToggle}
+          aria-expanded={expanded}
+          aria-controls={`timeline-details-${round.number}`}
+          onClick={onToggle}
+        >
+          <span className="timeline-card-title">
+            <span className="timeline-card-kicker">Stage {round.number}</span>
+            <strong>{round.name}</strong>
+          </span>
+          <span className="timeline-card-action">
+            {round.date === "TBD"
+              ? <span className="timeline-date">TBD</span>
+              : <time>{round.date}</time>}
+            <span className={expanded ? "timeline-card-chevron is-open" : "timeline-card-chevron"} aria-hidden="true" />
+          </span>
+        </button>
       </motion.div>
 
       {impacted && (
@@ -168,6 +191,16 @@ function TimelineCard({ round, revealed, impacted, cardRef, index }) {
           ))}
         </div>
       )}
+      <motion.div
+        id={`timeline-details-${round.number}`}
+        className="timeline-details"
+        initial={false}
+        animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
+        transition={{ duration: reducedMotion ? 0 : 0.34, ease: [0.22, 1, 0.36, 1] }}
+        aria-hidden={!expanded}
+      >
+        <div className="timeline-details-inner"><p>{round.details}</p></div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -180,6 +213,8 @@ function TimelineSection() {
   const cardRefs = useRef([]);
   const [revealedRounds, setRevealedRounds] = useState([]);
   const [impactedRound, setImpactedRound] = useState(null);
+  const [openRound, setOpenRound] = useState(null);
+  const [timelineFinished, setTimelineFinished] = useState(false);
   const [cloudsActive, setCloudsActive] = useState(false);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
@@ -222,23 +257,28 @@ function TimelineSection() {
       const lastCard = cardRefs.current[cardRefs.current.length - 1];
       if (!firstCard || !lastCard) return;
 
-      const firstTop = firstCard.getBoundingClientRect().top + window.scrollY;
-      const lastBottom = lastCard.getBoundingClientRect().bottom + window.scrollY;
-      const cardsHeight = lastBottom - firstTop;
-      const screenMargin = Math.max(16, (window.innerHeight - cardsHeight) / 2);
       const startY = window.scrollY;
-      const endY = Math.min(
-        document.documentElement.scrollHeight - window.innerHeight,
-        Math.max(startY, firstTop - screenMargin),
-      );
-      if (endY - startY < 12) return;
+      const getEndY = () => {
+        const firstTop = firstCard.getBoundingClientRect().top + window.scrollY;
+        const lastBottom = lastCard.getBoundingClientRect().bottom + window.scrollY;
+        const cardsHeight = lastBottom - firstTop;
+        const target = cardsHeight > window.innerHeight - 32
+          ? lastBottom - window.innerHeight + 16
+          : firstTop - Math.max(16, (window.innerHeight - cardsHeight) / 2);
+        return Math.min(
+          document.documentElement.scrollHeight - window.innerHeight,
+          Math.max(startY, target),
+        );
+      };
+      if (getEndY() - startY < 12) return;
 
       scrollStartedAt = performance.now();
-      const scrollDuration = 2600;
+      const scrollDuration = 3000;
       const advanceScroll = (now) => {
         if (cancelled) return;
         const progress = Math.min((now - scrollStartedAt) / scrollDuration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
+        const endY = getEndY();
         window.scrollTo(0, Math.max(window.scrollY, startY + (endY - startY) * eased));
         if (progress < 1) scrollFrame = window.requestAnimationFrame(advanceScroll);
         else scrollFrame = null;
@@ -251,32 +291,29 @@ function TimelineSection() {
     window.addEventListener("touchstart", stopAutoScroll, { passive: true });
     window.addEventListener("keydown", stopAutoScroll);
 
-    const getTargets = () => {
+    const getTarget = (index) => {
       const stageBox = stageRef.current.getBoundingClientRect();
       const starSize = starRef.current.getBoundingClientRect().width;
-
-      return cardRefs.current.map((card, index) => {
-        const cardBox = card.getBoundingClientRect();
-
-        return {
-          x: cardBox.left - stageBox.left + cardBox.width * [0.27, 0.72, 0.36, 0.64][index] - starSize / 2,
-          y: cardBox.top - stageBox.top - starSize + 5,
-        };
-      });
+      const cardBox = cardRefs.current[index].getBoundingClientRect();
+      return {
+        x: cardBox.left - stageBox.left + cardBox.width * [0.27, 0.72, 0.36, 0.64][index] - starSize / 2,
+        y: cardBox.top - stageBox.top - starSize + 5,
+      };
     };
 
     const impactRound = async (index) => {
       if (cancelled) return;
       setImpactedRound(index);
       setRevealedRounds((current) => [...current, index]);
-      await wait(80);    // short impact pause before rebound
+      if (index === 0) setOpenRound(0);
+      await wait(index === 0 ? 380 : 80);
     };
 
     const runTimeline = async () => {
       await wait(500);             // auto scroll delay
       if (cancelled) return;
 
-      const targets = getTargets();
+      const firstTarget = getTarget(0);
       const star = starRef.current;
       const startTransform = new DOMMatrixReadOnly(getComputedStyle(star).transform);
       const start = { x: startTransform.m41, y: startTransform.m42 };
@@ -301,8 +338,8 @@ function TimelineSection() {
       await animate(
         star,
         {
-          x: [start.x + 5, start.x + firstDrift, targets[0].x + firstApproach, targets[0].x],
-          y: [start.y - 13, start.y - randomBetween(82, 142), targets[0].y - randomBetween(54, 104), targets[0].y + 8],
+          x: [start.x + 5, start.x + firstDrift, firstTarget.x + firstApproach, firstTarget.x],
+          y: [start.y - 13, start.y - randomBetween(82, 142), firstTarget.y - randomBetween(54, 104), firstTarget.y + 8],
           rotate: [5, firstSpin * -0.45, firstSpin, -11],
           scaleX: [0.94, 0.88, 1.02, 0.91],
           scaleY: [1.08, 1.02, 0.86, 0.91],
@@ -314,18 +351,18 @@ function TimelineSection() {
       await animate(
         star,
         {
-          x: [targets[0].x, targets[0].x + firstReboundX, targets[0].x - firstReboundX * 0.3, targets[0].x],
-          y: [targets[0].y + 8, targets[0].y - randomBetween(34, 62), targets[0].y - randomBetween(6, 17), targets[0].y],
+          x: [firstTarget.x, firstTarget.x + firstReboundX, firstTarget.x - firstReboundX * 0.3, firstTarget.x],
+          y: [firstTarget.y + 8, firstTarget.y - randomBetween(34, 62), firstTarget.y - randomBetween(6, 17), firstTarget.y],
           rotate: [-9, randomBetween(-26, 27), randomBetween(-11, 12), 0],
         },
         { duration: 0.2, times: [0, 0.36, 0.72, 1], ease: "easeOut" },   //first rebound
       );
 
-      for (let index = 1; index < targets.length; index += 1) {
+      for (let index = 1; index < cardRefs.current.length; index += 1) {
         if (cancelled) return;
 
-        const previous = targets[index - 1];
-        const target = targets[index];
+        const previous = getTarget(index - 1);
+        const target = getTarget(index);
         const direction = index % 2 ? 1 : -1;
         const reverseKick = randomBetween(18, 52);
         const midpoint = (previous.x + target.x) / 2 + direction * randomBetween(45, 155);
@@ -356,6 +393,7 @@ function TimelineSection() {
           { duration: 0.2, times: [0, 0.38, 0.74, 1], ease: "easeOut" },    // impact rebounds
         );
       }
+      if (!cancelled) setTimelineFinished(true);
     };
 
     runTimeline();
@@ -401,6 +439,9 @@ function TimelineSection() {
               index={index}
               revealed={revealedRounds.includes(index)}
               impacted={impactedRound === index}
+              expanded={openRound === index}
+              canToggle={revealedRounds.includes(index) && (index === 0 || timelineFinished)}
+              onToggle={() => setOpenRound((current) => current === index ? null : index)}
               cardRef={(element) => {
                 cardRefs.current[index] = element;
               }}
