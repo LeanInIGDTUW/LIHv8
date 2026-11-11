@@ -209,3 +209,43 @@
     transition: none;
   }
 }
+
+/* Contact / Queries */
+.lih-footer-contact {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(71, 48, 37, .25);
+}
+
+.lih-footer-contact h3 {
+  margin: 0 0 7px;
+  color: #332934;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.lih-footer-contact p {
+  margin: 0 0 5px;
+  color: #4f3932;
+  font-size: .84rem;
+  font-weight: 700;
+}
+
+.lih-footer-contact a {
+  color: #713d43;
+  font-size: .82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+
+.lih-footer-contact a:hover {
+  color: #332934;
+  text-decoration: underline;
+}
+
+.lih-footer-contact a:focus-visible {
+  outline: 2px solid #332934;
+  outline-offset: 4px;
+}

@@ -1,3 +1,4 @@
+
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import "./Footer.css";
 
@@ -40,18 +41,25 @@ function Footer() {
                 height="56"
               />
             </a>
+
             <div>
               <h2 id="lih-footer-title">Lean In @ IGDTUW</h2>
-              <p className="lih-footer-tagline"><strong>We rise by lifting others!</strong></p>
+              <p className="lih-footer-tagline">
+                <strong>We rise by lifting others!</strong>
+              </p>
             </div>
-            <p className="lih-footer-intro"><strong>
-              Lean In is one of IGDTUW&apos;s oldest technical societies,
-              fostering technology, mentorship, sisterhood, and peer learning.
-            </strong></p>
+
+            <p className="lih-footer-intro">
+              <strong>
+                Lean In is one of IGDTUW&apos;s oldest technical societies,
+                fostering technology, mentorship, sisterhood, and peer learning.
+              </strong>
+            </p>
           </div>
 
           <nav className="lih-footer-social" aria-label="Stay Connected">
             <h3>Follow us</h3>
+
             <ul>
               {socials.map(({ name, href, Icon }) => (
                 <li key={name}>
@@ -61,16 +69,33 @@ function Footer() {
                     rel="noopener noreferrer"
                     aria-label={`${name} (opens in a new tab)`}
                   >
-                    <Icon aria-hidden="true" size={20} strokeWidth={2} />
+                    <Icon
+                      aria-hidden="true"
+                      size={20}
+                      strokeWidth={2}
+                    />
                     <span>{name}</span>
                   </a>
                 </li>
               ))}
             </ul>
+
+            <div className="lih-footer-contact">
+              <h3>For Queries</h3>
+              {/* <p>LeanIn IGDTUW</p> */}
+              <a href="mailto:leaninginigdtuw@gmail.com">
+                leaninginigdtuw@gmail.com
+              </a>
+            </div>
           </nav>
         </div>
+
         <div className="lih-footer-bottom">
-          <p><strong>© {new Date().getFullYear()} Lean In @ IGDTUW. All rights reserved.</strong></p>
+          <p>
+            <strong>
+              © {new Date().getFullYear()} Lean In @ IGDTUW. All rights reserved.
+            </strong>
+          </p>
         </div>
       </div>
     </footer>
