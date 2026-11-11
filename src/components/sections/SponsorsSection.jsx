@@ -1,10 +1,19 @@
+// const sponsors = [
+//   "/images/sponsors/Screenshot 2026-09-26 195352.png",
+//   "/images/sponsors/Screenshot 2026-09-26 195357.png",
+//   "/images/sponsors/Screenshot 2026-09-26 195402.png",
+//   "/images/sponsors/Screenshot 2026-09-26 195407.png",
+//   "/images/sponsors/Screenshot 2026-09-26 195413.png",
+//   "/images/sponsors/Screenshot 2026-09-26 195419.png",
+// ];
 const sponsors = [
-  "/images/sponsors/Screenshot 2026-09-26 195352.png",
-  "/images/sponsors/Screenshot 2026-09-26 195357.png",
-  "/images/sponsors/Screenshot 2026-09-26 195402.png",
-  "/images/sponsors/Screenshot 2026-09-26 195407.png",
-  "/images/sponsors/Screenshot 2026-09-26 195413.png",
+  "/images/sponsors/11labs (1).png",
+  "/images/sponsors/image.png",
+  "/images/sponsors/img.png",
+  "/images/sponsors/logo.png",
   "/images/sponsors/Screenshot 2026-09-26 195419.png",
+  "/images/sponsors/OSEN.png",
+  "/images/sponsors/craftora-only-logo.png",
 ];
 
 const marqueeSponsors = [...sponsors, ...sponsors];
@@ -24,7 +33,7 @@ function SponsorsSection() {
       <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <div className="mb-6 flex items-center gap-4 md:gap-5">
           <h2 className="shrink-0 font-['Poppins'] text-xl font-semibold tracking-[-0.04em] text-[#3e3540] md:text-2xl">
-            Previous Sponsors
+            Our Sponsors and Community Partners
           </h2>
           <div className="h-px flex-1 bg-[#7a5c6d]/50" />
         </div>

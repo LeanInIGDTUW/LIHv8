@@ -3,7 +3,7 @@ import RulebookSection from "./components/sections/RulebookSection.jsx";
 import AboutSection from "./components/sections/AboutSection.jsx";
 import MetricsSection from "./components/sections/MetricsSection.jsx";
 import TimelineSection from "./components/sections/TimelineSection.jsx";
-import TracksComingSoon from "./components/sections/TracksComingSoon.jsx";
+import TracksSection from "./components/sections/TracksSection.jsx";
 import PrizePoolSection from "./components/sections/PrizePoolSection.jsx";
 import SponsorsSection from "./components/sections/SponsorsSection.jsx";
 import GuidelinesSection from "./components/sections/GuidelinesSection.jsx";
@@ -17,7 +17,7 @@ function App() {
       <AboutSection />
       <MetricsSection />
       <TimelineSection />
-      <TracksComingSoon />
+      <TracksSection />
       <PrizePoolSection />
       <SponsorsSection />
       <GuidelinesSection />
