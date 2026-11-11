@@ -1,19 +1,32 @@
-// const sponsors = [
-//   "/images/sponsors/Screenshot 2026-09-26 195352.png",
-//   "/images/sponsors/Screenshot 2026-09-26 195357.png",
-//   "/images/sponsors/Screenshot 2026-09-26 195402.png",
-//   "/images/sponsors/Screenshot 2026-09-26 195407.png",
-//   "/images/sponsors/Screenshot 2026-09-26 195413.png",
-//   "/images/sponsors/Screenshot 2026-09-26 195419.png",
-// ];
 const sponsors = [
-  "/images/sponsors/11labs (1).png",
-  "/images/sponsors/image.png",
-  "/images/sponsors/img.png",
-  "/images/sponsors/logo.png",
-  "/images/sponsors/Screenshot 2026-09-26 195419.png",
-  "/images/sponsors/OSEN.png",
-  "/images/sponsors/craftora-only-logo.png",
+  {
+    name: "ElevenLabs",
+    logo: "/images/sponsors/11labs%20(1).png",
+  },
+  {
+    name: "Sponsor",
+    logo: "/images/sponsors/image.png",
+  },
+  {
+    name: "Sponsor",
+    logo: "/images/sponsors/img.png",
+  },
+  {
+    name: "Sponsor",
+    logo: "/images/sponsors/logo.png",
+  },
+  {
+    name: "Community Partner",
+    logo: "/images/sponsors/Screenshot%202026-09-26%20195419.png",
+  },
+  {
+    name: "OSEN",
+    logo: "/images/sponsors/OSEN.png",
+  },
+  {
+    name: "Craftora",
+    logo: "/images/sponsors/craftora-only-logo.png",
+  },
 ];
 
 const marqueeSponsors = [...sponsors, ...sponsors];
@@ -40,15 +53,16 @@ function SponsorsSection() {
 
         <div className="overflow-hidden rounded-[26px] border border-white/50 bg-white/20 shadow-[0_12px_30px_rgba(90,58,68,0.08)] backdrop-blur-[1px]">
           <div className="sponsor-marquee flex w-max items-center gap-5 py-5 md:gap-7 md:py-6">
-            {marqueeSponsors.map((logo, index) => (
+            {marqueeSponsors.map((sponsor, index) => (
               <div
-                key={`${logo}-${index}`}
+                key={`${sponsor.name}-${index}`}
                 className="flex h-20 w-[180px] shrink-0 items-center justify-center rounded-2xl border border-[#e9d3db] bg-white/75 px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] md:h-24 md:w-[220px]"
               >
                 <img
-                  src={logo}
-                  alt={`Sponsor ${(index % sponsors.length) + 1}`}
-                  className="max-h-12 w-auto object-contain md:max-h-14"
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  loading="eager"
+                  className="max-h-12 max-w-full w-auto object-contain md:max-h-14"
                 />
               </div>
             ))}
