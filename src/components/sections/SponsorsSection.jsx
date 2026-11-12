@@ -1,8 +1,8 @@
 const sponsors = [
-  {
-    name: "ElevenLabs",
-    logo: "/images/sponsors/11labs%20(1).png",
-  },
+  // {
+  //   name: "ElevenLabs",
+  //   logo: "/images/sponsors/11labs%20(1).png",
+  // },
   {
     name: "Sponsor",
     logo: "/images/sponsors/image.png",
