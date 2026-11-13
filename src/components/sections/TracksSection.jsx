@@ -430,6 +430,18 @@ function TracksSection() {
                     )}
                   </div>
                 )}
+                {/* ELEVENLABS EXTERNAL LINK */}
+                {selectedTrack.id === "elevenlabs" && (
+                  <a
+                    href="https://craftora.tech/hackathons/lean-in-hacks-8-0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="elevenlabs-explore-link"
+                  >
+                    Explore ElevenLabs Track
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
               </div>
             </motion.section>
           )}
